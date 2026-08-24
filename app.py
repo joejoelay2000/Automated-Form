@@ -12,7 +12,7 @@ import streamlit as st
 from docx import Document
 from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
-import fitz
+import pymupdf as fitz
 
 
 BASE_DIR = Path(__file__).parent
@@ -21,6 +21,116 @@ COMPANIES_DIR = BASE_DIR / "companies"
 COMPANIES_DIR.mkdir(exist_ok=True)
 
 st.set_page_config(page_title="Inspection Certificate", layout="centered")
+
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+        --ink: #17211b;
+        --muted: #657268;
+        --paper: #f5f3ed;
+        --panel: #fffdf8;
+        --line: #d9ddd3;
+        --leaf: #2f6b4f;
+        --leaf-dark: #214b38;
+        --sun: #e7ad45;
+    }
+
+    .stApp {
+        background:
+            radial-gradient(circle at 12% 8%, rgba(231, 173, 69, 0.18), transparent 22rem),
+            linear-gradient(135deg, #f5f3ed 0%, #eef2eb 100%);
+        color: var(--ink);
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    [data-testid="stHeader"] { background: transparent; }
+    [data-testid="stMainBlockContainer"] { max-width: 760px; padding-top: 3.5rem; }
+
+    h1, h2, h3 {
+        color: var(--ink) !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        letter-spacing: 0 !important;
+    }
+
+    h1 {
+        font-size: 2.65rem !important;
+        line-height: 1.05 !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    h1::after {
+        content: '';
+        display: block;
+        width: 3.5rem;
+        height: 0.28rem;
+        margin-top: 0.9rem;
+        border-radius: 99px;
+        background: var(--sun);
+    }
+
+    h2 { margin-top: 2rem !important; }
+    h3 { color: var(--leaf-dark) !important; }
+    [data-testid="stCaptionContainer"] { color: var(--muted); }
+
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background: rgba(255, 253, 248, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 14px 35px rgba(36, 57, 43, 0.07);
+    }
+
+    [data-testid="stTextInput"], [data-testid="stTextArea"], [data-testid="stDateInput"] {
+        margin-bottom: 0.45rem;
+    }
+
+    input, textarea {
+        background: var(--panel) !important;
+        border-color: var(--line) !important;
+        border-radius: 9px !important;
+        color: var(--ink) !important;
+    }
+
+    input:focus, textarea:focus {
+        border-color: var(--leaf) !important;
+        box-shadow: 0 0 0 1px var(--leaf) !important;
+    }
+
+    [data-testid="stButton"] button, [data-testid="stFormSubmitButton"] button,
+    [data-testid="stDownloadButton"] button {
+        min-height: 2.7rem;
+        border-radius: 9px;
+        border: 1px solid var(--line);
+        font-weight: 600;
+        transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    [data-testid="stButton"] button:hover, [data-testid="stFormSubmitButton"] button:hover,
+    [data-testid="stDownloadButton"] button:hover {
+        border-color: var(--leaf);
+        box-shadow: 0 5px 14px rgba(33, 75, 56, 0.14);
+        transform: translateY(-1px);
+    }
+
+    [data-testid="stButton"] button[kind="primary"], [data-testid="stFormSubmitButton"] button[kind="primary"],
+    [data-testid="stDownloadButton"] button[kind="primary"] {
+        background: var(--leaf);
+        border-color: var(--leaf);
+    }
+
+    [data-testid="stAlert"] { border-radius: 10px; }
+    hr { border-color: rgba(101, 114, 104, 0.25); }
+
+    @media (max-width: 640px) {
+        [data-testid="stMainBlockContainer"] { padding: 2rem 1rem 3rem; }
+        h1 { font-size: 2.15rem !important; }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 def load_companies():
@@ -86,6 +196,14 @@ def set_paragraph_text(paragraph, text):
         paragraph.add_run(text)
 
 
+def apply_document_font(doc):
+    normal_font = doc.styles["Normal"].font
+    for paragraph in doc.paragraphs:
+        for run in paragraph.runs:
+            run.font.name = normal_font.name
+            run.font.size = normal_font.size
+
+
 def set_remark_spacing(paragraph):
     paragraph.paragraph_format.line_spacing = 1.15
 
@@ -119,12 +237,14 @@ def generate_docx(company, report_date, remarks):
     refs = template_refs()
     for field in ("klien", "giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
-    address_lines = [line.strip() for line in company["alamat"].splitlines() if line.strip()]
+    address_lines = [line.strip().upper() for line in company["alamat"].splitlines() if line.strip()]
     address_paragraphs = [doc.paragraphs[index] for index in (15, 16, 17, 18)]
     replace_runs(doc, [(15, 3), (15, 4), (15, 5)], address_lines[0] if address_lines else "")
+    continuation_indent = address_paragraphs[1].paragraph_format.left_indent
     for paragraph, line in zip(address_paragraphs[1:], address_lines[1:]):
-        leading_spaces = re.match(r"^\s*", paragraph.text).group(0)
-        set_paragraph_text(paragraph, leading_spaces + line)
+        paragraph.paragraph_format.left_indent = continuation_indent
+        paragraph.paragraph_format.first_line_indent = None
+        set_paragraph_text(paragraph, line)
     for paragraph in address_paragraphs[len(address_lines):]:
         set_paragraph_text(paragraph, "")
     replace_runs(doc, refs["date"], report_date.strftime("%-d/%-m/%Y"))
@@ -135,6 +255,7 @@ def generate_docx(company, report_date, remarks):
         if paragraph.text.strip() in {"1 / 2", "2 / 2"}:
             paragraph._element.getparent().remove(paragraph._element)
     clear_highlights(doc)
+    apply_document_font(doc)
     output = io.BytesIO()
     doc.save(output)
     return output.getvalue()
