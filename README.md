@@ -27,6 +27,8 @@ SUPABASE_URL = "https://your-project.supabase.co"
 SUPABASE_KEY = "your-server-side-key"
 ```
 
+`SUPABASE_URL` must be the Supabase Project URL from **Project Settings -> API**. Do not use the Supabase dashboard URL. `SUPABASE_KEY` should be the server-side `service_role` key from that same page. After changing secrets, reboot the Streamlit app from **Manage app**.
+
 Use a server-side Supabase key because this app does not have user authentication. Keep the key in Streamlit Secrets and never commit it to the repository. Once both secrets are present, the app reads and writes company profiles in Supabase; without them it continues to use local JSON files.
 
 DOCX downloads work with the Python dependencies in `requirements.txt`. PDF downloads convert the generated DOCX with LibreOffice so the PDF keeps the same format as the Word document.

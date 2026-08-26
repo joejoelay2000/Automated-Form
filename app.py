@@ -31,9 +31,10 @@ COMPANIES_DIR.mkdir(exist_ok=True)
 def get_secret(name):
     value = os.getenv(name)
     if value:
-        return value
+        return value.strip()
     try:
-        return st.secrets.get(name)
+        value = st.secrets.get(name)
+        return value.strip() if isinstance(value, str) else value
     except (FileNotFoundError, KeyError):
         return None
 
@@ -42,7 +43,11 @@ def get_database():
     if create_client is None:
         return None
     url = get_secret("SUPABASE_URL")
-    key = get_secret("SUPABASE_KEY")
+    key = (
+        get_secret("SUPABASE_KEY")
+        or get_secret("SUPABASE_SERVICE_ROLE_KEY")
+        or get_secret("SUPABASE_ANON_KEY")
+    )
     return create_client(url, key) if url and key else None
 
 st.set_page_config(page_title="Inspection Certificate", layout="centered")
