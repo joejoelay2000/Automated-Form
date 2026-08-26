@@ -30,6 +30,23 @@ TEMPLATE_PATH = BASE_DIR / "sample.docx"
 COMPANIES_DIR = BASE_DIR / "companies"
 COMPANIES_DIR.mkdir(exist_ok=True)
 
+RECIPIENT_ADDRESSES = {
+    "Melaka": """PEJABAT KAWASAN NEGERI SEMBILAN & MELAKA
+TINGKAT 3, WISMA PERKESO
+JALAN PERSEKUTUAN, MITC
+75450 AYER KEROH
+MELAKA DARUL AZIM
+TEL: 06 - 231 9594 / 9597
+FAKS: 06 - 231 9620""",
+    "Selangor": """PEJABAT KAWASAN NEGERI SEMBILAN & MELAKA
+TINGKAT 3, WISMA PERKESO
+JALAN PERSEKUTUAN, MITC
+75450 AYER KEROH
+MELAKA DARUL AZIM
+TEL: 06 - 231 9594 / 9597
+FAKS: 06 - 231 9620""",
+}
+
 
 def get_secret(name):
     value = os.getenv(name)
@@ -304,6 +321,12 @@ def template_refs():
 def generate_docx(company, report_date, remarks):
     doc = Document(TEMPLATE_PATH)
     refs = template_refs()
+    recipient_lines = RECIPIENT_ADDRESSES.get(
+        company.get("kepada", "Melaka"), RECIPIENT_ADDRESSES["Melaka"]
+    ).splitlines()
+    replace_runs(doc, [(5, 2)], recipient_lines[0])
+    for paragraph_index, line in zip(range(6, 12), recipient_lines[1:]):
+        set_paragraph_text(doc.paragraphs[paragraph_index], line)
     for field in ("klien", "giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
     address_lines = [line.strip().upper() for line in company["alamat"].splitlines() if line.strip()]
@@ -361,6 +384,7 @@ def create_share_text(company, report_date, remarks):
     return (
         "Inspection Certificate\n"
         f"Company: {company['klien']}\n"
+        f"Kepada: {company.get('kepada', 'Melaka')}\n"
         f"Date: {report_date.strftime('%-d/%-m/%Y')}\n"
         f"Circuit No.: {company['giliran_no']}\n"
         f"Voltage: {company['voltan']}\n"
@@ -440,6 +464,7 @@ elif st.session_state.screen == "create_company":
         st.rerun()
     with st.form("new_company"):
         klien = st.text_input("Client")
+        kepada = st.selectbox("Kepada", list(RECIPIENT_ADDRESSES))
         alamat = st.text_area("Address")
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -457,6 +482,7 @@ elif st.session_state.screen == "create_company":
         else:
             company = {
                 "klien": klien.strip(),
+                "kepada": kepada,
                 "alamat": alamat.strip(),
                 "giliran_no": giliran_no.strip(),
                 "voltan": voltan.strip(),
@@ -476,6 +502,15 @@ elif st.session_state.screen == "edit_company":
         st.rerun()
     with st.form("edit_company_form"):
         klien = st.text_input("Client", value=original_company["klien"])
+        kepada_options = list(RECIPIENT_ADDRESSES)
+        current_kepada = original_company.get("kepada", "Melaka")
+        kepada = st.selectbox(
+            "Kepada",
+            kepada_options,
+            index=kepada_options.index(current_kepada)
+            if current_kepada in kepada_options
+            else 0,
+        )
         alamat = st.text_area("Address", value=original_company["alamat"])
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -488,6 +523,7 @@ elif st.session_state.screen == "edit_company":
     if submitted:
         company = {
             "klien": klien.strip(),
+            "kepada": kepada,
             "alamat": alamat.strip(),
             "giliran_no": giliran_no.strip(),
             "voltan": voltan.strip(),
