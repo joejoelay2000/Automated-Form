@@ -333,7 +333,7 @@ def generate_docx(company, report_date, remarks):
         paragraph.paragraph_format.first_line_indent = 0
     set_paragraph_text(recipient_paragraphs[0], f"Kepada\t:\t {recipient_lines[0]}")
     for paragraph, line in zip(recipient_paragraphs[1:], recipient_lines[1:]):
-        paragraph.paragraph_format.left_indent = Inches(0.4)
+        paragraph.paragraph_format.left_indent = Inches(0.8)
         set_paragraph_text(paragraph, line)
     for field in ("klien", "giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
