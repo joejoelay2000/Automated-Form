@@ -17,9 +17,11 @@ import pymupdf as fitz
 
 try:
     from supabase import Client, create_client
+    from postgrest.exceptions import APIError
 except ImportError:
     Client = None
     create_client = None
+    APIError = Exception
 
 
 BASE_DIR = Path(__file__).parent
@@ -166,7 +168,14 @@ st.markdown(
 def load_companies():
     database = get_database()
     if database:
-        response = database.table("companies").select("data").order("name").execute()
+        try:
+            response = database.table("companies").select("data").order("name").execute()
+        except APIError as error:
+            raise RuntimeError(
+                "Supabase rejected the companies query. "
+                "Check that the companies table exists and that the configured key "
+                f"has access. Supabase says: {error}"
+            ) from error
         if response.data:
             return [row["data"] for row in response.data]
 
@@ -349,7 +358,11 @@ if "screen" not in st.session_state:
     st.session_state.screen = "home"
 
 st.title("Inspection Certificate")
-companies = load_companies()
+try:
+    companies = load_companies()
+except RuntimeError as error:
+    st.error(str(error))
+    st.stop()
 
 if st.session_state.screen == "home":
     st.header("Select a company")

@@ -20,6 +20,18 @@ create table companies (
 );
 ```
 
+If you use the `anon` key, enable access with these policies (the `service_role` key bypasses RLS):
+
+```sql
+alter table companies enable row level security;
+create policy "allow company reads" on companies for select to anon using (true);
+create policy "allow company writes" on companies for insert to anon with check (true);
+create policy "allow company updates" on companies for update to anon using (true) with check (true);
+create policy "allow company deletes" on companies for delete to anon using (true);
+```
+
+Also confirm the table is named exactly `companies` and has exactly these columns: `name` (text primary key) and `data` (jsonb).
+
 In the Streamlit app settings, add these secrets:
 
 ```toml
