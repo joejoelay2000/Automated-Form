@@ -47,7 +47,7 @@ DOCX downloads work with the Python dependencies in `requirements.txt`. PDF down
 
 Existing profiles can be edited from the company list. The completed certificate can be downloaded as Word, PDF, or a text summary, and the summary can be shared through WhatsApp, Telegram, or email. Attach the downloaded Word or PDF file separately when sending it through a messaging service.
 
-Each company profile includes a `Kepada` choice for Melaka or Selangor. Existing profiles without this field use Melaka by default. Both choices currently use the recipient address supplied for the certificate template.
+Each company profile includes a `Kepada` choice for Melaka or Selangor. Existing profiles without this field use Melaka by default. Each choice inserts its corresponding recipient address into the certificate.
 
 For Streamlit deployments, `packages.txt` installs LibreOffice automatically.
 For a local Ubuntu installation, run:
