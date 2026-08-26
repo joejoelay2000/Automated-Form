@@ -12,6 +12,7 @@ from urllib.parse import quote
 
 import streamlit as st
 from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 import pymupdf as fitz
@@ -324,9 +325,14 @@ def generate_docx(company, report_date, remarks):
     recipient_lines = RECIPIENT_ADDRESSES.get(
         company.get("kepada", "Melaka"), RECIPIENT_ADDRESSES["Melaka"]
     ).splitlines()
-    replace_runs(doc, [(5, 2)], recipient_lines[0])
-    for paragraph_index, line in zip(range(6, 12), recipient_lines[1:]):
-        set_paragraph_text(doc.paragraphs[paragraph_index], line)
+    recipient_paragraphs = doc.paragraphs[5:12]
+    for paragraph in recipient_paragraphs:
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        paragraph.paragraph_format.left_indent = 0
+        paragraph.paragraph_format.first_line_indent = 0
+    set_paragraph_text(recipient_paragraphs[0], f"Kepada\t:\t{recipient_lines[0]}")
+    for paragraph, line in zip(recipient_paragraphs[1:], recipient_lines[1:]):
+        set_paragraph_text(paragraph, line)
     for field in ("klien", "giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
     address_lines = [line.strip().upper() for line in company["alamat"].splitlines() if line.strip()]
