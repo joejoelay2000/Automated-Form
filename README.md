@@ -45,6 +45,8 @@ Use a server-side Supabase key because this app does not have user authenticatio
 
 DOCX downloads work with the Python dependencies in `requirements.txt`. PDF downloads convert the generated DOCX with LibreOffice so the PDF keeps the same format as the Word document.
 
+Existing profiles can be edited from the company list. The completed certificate can be downloaded as Word, PDF, or a text summary, and the summary can be shared through WhatsApp, Telegram, or email. Attach the downloaded Word or PDF file separately when sending it through a messaging service.
+
 For Streamlit deployments, `packages.txt` installs LibreOffice automatically.
 For a local Ubuntu installation, run:
 

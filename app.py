@@ -8,6 +8,7 @@ import tempfile
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 
 import streamlit as st
 from docx import Document
@@ -206,6 +207,12 @@ def save_company(company):
     path.write_text(json.dumps(company, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def update_company(original_name, company):
+    if original_name.casefold() != company["klien"].casefold():
+        delete_company({"klien": original_name})
+    save_company(company)
+
+
 def delete_company(company):
     database = get_database()
     if database:
@@ -346,6 +353,22 @@ def convert_to_pdf(docx_bytes):
         return pdf_bytes
 
 
+def create_share_text(company, report_date, remarks):
+    remark_text = "\n".join(
+        f"{index + 1}. {format_points(value)}"
+        for index, value in enumerate(remarks)
+    )
+    return (
+        "Inspection Certificate\n"
+        f"Company: {company['klien']}\n"
+        f"Date: {report_date.strftime('%-d/%-m/%Y')}\n"
+        f"Circuit No.: {company['giliran_no']}\n"
+        f"Voltage: {company['voltan']}\n"
+        f"Amperage: {company['ampere']}\n"
+        f"Remarks:\n{remark_text}"
+    )
+
+
 def reset_form():
     for key in list(st.session_state):
         if key.startswith("remark_") or key in (
@@ -387,11 +410,16 @@ if st.session_state.screen == "home":
                     st.session_state.pop("pending_delete_company", None)
                     st.rerun()
         else:
-            continue_col, delete_col = st.columns(2)
+            continue_col, edit_col, delete_col = st.columns(3)
             with continue_col:
                 if st.button("Continue", type="primary"):
                     st.session_state.selected_company = selected_company
                     st.session_state.screen = "report"
+                    st.rerun()
+            with edit_col:
+                if st.button("Edit company"):
+                    st.session_state.edit_company = selected_company
+                    st.session_state.screen = "edit_company"
                     st.rerun()
             with delete_col:
                 if st.button("Delete company"):
@@ -439,6 +467,48 @@ elif st.session_state.screen == "create_company":
             st.session_state.screen = "report"
             st.rerun()
 
+elif st.session_state.screen == "edit_company":
+    original_company = st.session_state.edit_company
+    st.header("Edit company profile")
+    if st.button("Back to companies"):
+        st.session_state.pop("edit_company", None)
+        st.session_state.screen = "home"
+        st.rerun()
+    with st.form("edit_company_form"):
+        klien = st.text_input("Client", value=original_company["klien"])
+        alamat = st.text_area("Address", value=original_company["alamat"])
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            giliran_no = st.text_input("Circuit No.", value=original_company["giliran_no"])
+        with col2:
+            voltan = st.text_input("Voltage", value=original_company["voltan"])
+        with col3:
+            ampere = st.text_input("Amperage", value=original_company["ampere"])
+        submitted = st.form_submit_button("Save changes", type="primary")
+    if submitted:
+        company = {
+            "klien": klien.strip(),
+            "alamat": alamat.strip(),
+            "giliran_no": giliran_no.strip(),
+            "voltan": voltan.strip(),
+            "ampere": ampere.strip(),
+        }
+        duplicate = any(
+            c["klien"].casefold() == company["klien"].casefold()
+            and c["klien"].casefold() != original_company["klien"].casefold()
+            for c in companies
+        )
+        if not all(company.values()):
+            st.error("Please complete all company details.")
+        elif duplicate:
+            st.error("That client is already registered.")
+        else:
+            update_company(original_company["klien"], company)
+            st.session_state.pop("edit_company", None)
+            st.session_state.selected_company = company
+            st.session_state.screen = "report"
+            st.rerun()
+
 elif st.session_state.screen == "report":
     company = st.session_state.selected_company
     st.header("New certificate")
@@ -468,6 +538,7 @@ elif st.session_state.screen == "report":
             st.session_state.remarks = remarks
             st.session_state.generated_docx = generate_docx(company, report_date, remarks)
             st.session_state.generated_pdf = convert_to_pdf(st.session_state.generated_docx)
+            st.session_state.share_text = create_share_text(company, report_date, remarks)
             st.session_state.screen = "download"
             st.rerun()
 
@@ -475,6 +546,7 @@ elif st.session_state.screen == "download":
     company = st.session_state.selected_company
     st.header("Document ready")
     st.success(f"The document for {company['klien']} has been generated.")
+    share_text = st.session_state.share_text
     filename = "".join(c for c in company["klien"] if c.isalnum() or c in " _-").strip() or "borang"
     st.download_button(
         "Download Word (.docx)",
@@ -493,6 +565,21 @@ elif st.session_state.screen == "download":
     else:
         st.button("Download PDF (.pdf)", disabled=True)
         st.warning("PDF export is unavailable because the generated Word document could not be converted. Install LibreOffice and try again.")
+    st.subheader("Share certificate")
+    st.download_button(
+        "Download text summary (.txt)",
+        share_text,
+        file_name=f"{filename}.txt",
+        mime="text/plain",
+    )
+    encoded_share_text = quote(share_text)
+    share_col1, share_col2, share_col3 = st.columns(3)
+    with share_col1:
+        st.link_button("WhatsApp", f"https://wa.me/?text={encoded_share_text}")
+    with share_col2:
+        st.link_button("Telegram", f"https://t.me/share/url?url=&text={encoded_share_text}")
+    with share_col3:
+        st.link_button("Email", f"mailto:?subject={quote(f'Inspection Certificate - {company["klien"]}')}&body={encoded_share_text}")
     if st.button("Create another certificate"):
         st.session_state.screen = "report"
         st.rerun()
