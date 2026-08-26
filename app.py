@@ -19,6 +19,15 @@ from docx.oxml.ns import qn
 import pymupdf as fitz
 
 try:
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+    from googleapiclient.http import MediaIoBaseUpload
+except ImportError:
+    service_account = None
+    build = None
+    MediaIoBaseUpload = None
+
+try:
     from supabase import Client, create_client
     from postgrest.exceptions import APIError
 except ImportError:
@@ -59,6 +68,69 @@ def get_secret(name):
         return value.strip() if isinstance(value, str) else value
     except (FileNotFoundError, KeyError):
         return None
+
+
+def company_name(company):
+    return company.get("company_name") or company.get("klien", "")
+
+
+def company_nickname(company):
+    return company.get("nickname") or company_name(company)
+
+
+def company_category(company):
+    value = company.get("category") or company.get("category_name") or "Uncategorized"
+    return str(value).strip() or "Uncategorized"
+
+
+def slugify(value):
+    return re.sub(r"[^a-z0-9]+", "-", str(value).strip().lower()).strip("-") or "uncategorized"
+
+
+def get_default_remarks(company):
+    raw = company.get("default_remarks")
+    if raw is None:
+        raw = company.get("default_remark")
+    if isinstance(raw, str):
+        values = [raw.strip() for _ in range(3)]
+    elif isinstance(raw, (list, tuple)):
+        values = [str(item).strip() for item in raw[:3]]
+        values.extend(["", "", ""])
+        values = values[:3]
+    else:
+        values = ["", "", ""]
+    return values
+
+
+def sanitized_filename(value):
+    value = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "", value)
+    return value.rstrip(" .").strip() or "borang"
+
+
+def upload_to_google_drive(file_bytes, filename, mime_type):
+    credentials_json = get_secret("GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON")
+    if not all((service_account, build, MediaIoBaseUpload, credentials_json)):
+        raise RuntimeError(
+            "Google Drive upload is not configured. Add the Google Drive dependencies "
+            "and GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON to Streamlit secrets."
+        )
+    if isinstance(credentials_json, str):
+        credentials_json = json.loads(credentials_json)
+    credentials = service_account.Credentials.from_service_account_info(
+        credentials_json,
+        scopes=["https://www.googleapis.com/auth/drive.file"],
+    )
+    drive = build("drive", "v3", credentials=credentials)
+    metadata = {"name": filename}
+    folder_id = get_secret("GOOGLE_DRIVE_FOLDER_ID")
+    if folder_id:
+        metadata["parents"] = [folder_id]
+    uploaded = drive.files().create(
+        body=metadata,
+        media_body=MediaIoBaseUpload(io.BytesIO(file_bytes), mimetype=mime_type),
+        fields="id,webViewLink",
+    ).execute()
+    return uploaded.get("webViewLink") or f"https://drive.google.com/file/d/{uploaded['id']}/view"
 
 
 def get_database():
@@ -335,7 +407,8 @@ def generate_docx(company, report_date, remarks):
     for paragraph, line in zip(recipient_paragraphs[1:], recipient_lines[1:]):
         paragraph.paragraph_format.left_indent = Inches(0.8)
         set_paragraph_text(paragraph, line)
-    for field in ("klien", "giliran_no", "voltan", "ampere"):
+    replace_runs(doc, refs["klien"], company_name(company))
+    for field in ("giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
     address_lines = [line.strip().upper() for line in company["alamat"].splitlines() if line.strip()]
     address_paragraphs = [doc.paragraphs[index] for index in (15, 16, 17, 18)]
@@ -391,7 +464,7 @@ def create_share_text(company, report_date, remarks):
     )
     return (
         "Inspection Certificate\n"
-        f"Company: {company['klien']}\n"
+        f"Company: {company_name(company)}\n"
         f"Kepada: {company.get('kepada', 'Melaka')}\n"
         f"Date: {report_date.strftime('%-d/%-m/%Y')}\n"
         f"Circuit No.: {company['giliran_no']}\n"
@@ -404,7 +477,8 @@ def create_share_text(company, report_date, remarks):
 def reset_form():
     for key in list(st.session_state):
         if key.startswith("remark_") or key in (
-            "screen", "selected_company", "generated_docx", "generated_pdf", "remark_count"
+            "screen", "selected_company", "generated_docx", "generated_pdf",
+            "generated_date", "drive_link", "remark_count"
         ):
             st.session_state.pop(key, None)
 
@@ -422,41 +496,57 @@ except RuntimeError as error:
 if st.session_state.screen == "home":
     st.header("Select a company")
     if companies:
-        labels = [company["klien"] for company in companies]
+        grouped_companies = {}
+        for company in companies:
+            grouped_companies.setdefault(company_category(company), []).append(company)
         st.caption("Choose a company from the list below.")
-        with st.container(height=300, border=True):
-            selected = st.radio("Registered companies", labels, label_visibility="collapsed")
-        selected_company = next(c for c in companies if c["klien"] == selected)
-        pending_delete = st.session_state.get("pending_delete_company")
-        if pending_delete == selected:
-            st.warning(f'Are you sure you wish to delete "{selected}"? This cannot be undone.')
-            confirm_delete = st.checkbox("Yes, delete this company profile")
-            confirm_col, cancel_col = st.columns(2)
-            with confirm_col:
-                if st.button("Delete permanently", type="primary", disabled=not confirm_delete):
-                    if delete_company(selected_company):
+        for category in sorted(grouped_companies, key=str.casefold):
+            st.subheader(category)
+            category_companies = grouped_companies[category]
+            labels = [company_nickname(company) for company in category_companies]
+            selected = st.radio(
+                f"Companies in {category}",
+                labels,
+                key=f"company_radio_{slugify(category)}",
+                label_visibility="collapsed",
+            )
+            selected_company = category_companies[labels.index(selected)]
+            pending_delete = st.session_state.get("pending_delete_company")
+            if pending_delete == company_name(selected_company):
+                st.warning(f'Are you sure you wish to delete "{selected}"? This cannot be undone.')
+                confirm_delete = st.checkbox("Yes, delete this company profile")
+                confirm_col, cancel_col = st.columns(2)
+                with confirm_col:
+                    if st.button(
+                        "Delete permanently",
+                        type="primary",
+                        disabled=not confirm_delete,
+                        key=f"delete_permanent_{slugify(company_name(selected_company))}",
+                    ):
+                        if delete_company(selected_company):
+                            st.session_state.pop("pending_delete_company", None)
+                            st.rerun()
+                with cancel_col:
+                    if st.button("Cancel deletion", key=f"cancel_delete_{slugify(company_name(selected_company))}"):
                         st.session_state.pop("pending_delete_company", None)
                         st.rerun()
-            with cancel_col:
-                if st.button("Cancel deletion"):
-                    st.session_state.pop("pending_delete_company", None)
-                    st.rerun()
-        else:
-            continue_col, edit_col, delete_col = st.columns(3)
-            with continue_col:
-                if st.button("Continue", type="primary"):
-                    st.session_state.selected_company = selected_company
-                    st.session_state.screen = "report"
-                    st.rerun()
-            with edit_col:
-                if st.button("Edit company"):
-                    st.session_state.edit_company = selected_company
-                    st.session_state.screen = "edit_company"
-                    st.rerun()
-            with delete_col:
-                if st.button("Delete company"):
-                    st.session_state.pending_delete_company = selected
-                    st.rerun()
+            else:
+                continue_col, edit_col, delete_col = st.columns(3)
+                with continue_col:
+                    if st.button("Continue", type="primary", key=f"continue_{slugify(company_name(selected_company))}"):
+                        st.session_state.selected_company = selected_company
+                        st.session_state.screen = "report"
+                        st.rerun()
+                with edit_col:
+                    if st.button("Edit company", key=f"edit_{slugify(company_name(selected_company))}"):
+                        st.session_state.edit_company = selected_company
+                        st.session_state.screen = "edit_company"
+                        st.rerun()
+                with delete_col:
+                    if st.button("Delete company", key=f"delete_{slugify(company_name(selected_company))}"):
+                        st.session_state.pending_delete_company = company_name(selected_company)
+                        st.rerun()
+            st.divider()
     else:
         st.info("No companies have been registered yet.")
 
@@ -472,8 +562,16 @@ elif st.session_state.screen == "create_company":
         st.rerun()
     with st.form("new_company"):
         klien = st.text_input("Client")
+        nickname = st.text_input("Nickname", help="Used only in the company selection list.")
+        category = st.text_input("Category", value="Uncategorized", help="Custom group name used to organize company profiles.")
         kepada = st.selectbox("Kepada", list(RECIPIENT_ADDRESSES))
         alamat = st.text_area("Address")
+        st.caption("Default remarks (same as the three remark sections on the certificate)")
+        default_remarks = [
+            st.text_area("Default remark 1", key="new_default_remark_1", help="Prefilled in remark section 1.") ,
+            st.text_area("Default remark 2", key="new_default_remark_2", help="Prefilled in remark section 2.") ,
+            st.text_area("Default remark 3", key="new_default_remark_3", help="Prefilled in remark section 3.") ,
+        ]
         col1, col2, col3 = st.columns(3)
         with col1:
             giliran_no = st.text_input("Circuit No.")
@@ -485,11 +583,17 @@ elif st.session_state.screen == "create_company":
     if submitted:
         if not all((klien.strip(), alamat.strip(), giliran_no.strip(), voltan.strip(), ampere.strip())):
             st.error("Please complete all company details.")
-        elif any(c["klien"].casefold() == klien.strip().casefold() for c in companies):
+        elif any(company_name(c).casefold() == klien.strip().casefold() for c in companies):
             st.error("That client is already registered.")
         else:
+            values = [remark.strip() for remark in default_remarks]
             company = {
                 "klien": klien.strip(),
+                "company_name": klien.strip(),
+                "nickname": nickname.strip(),
+                "category": category.strip() or "Uncategorized",
+                "default_remark": values[0],
+                "default_remarks": values,
                 "kepada": kepada,
                 "alamat": alamat.strip(),
                 "giliran_no": giliran_no.strip(),
@@ -509,7 +613,9 @@ elif st.session_state.screen == "edit_company":
         st.session_state.screen = "home"
         st.rerun()
     with st.form("edit_company_form"):
-        klien = st.text_input("Client", value=original_company["klien"])
+        klien = st.text_input("Client", value=company_name(original_company))
+        nickname = st.text_input("Nickname", value=original_company.get("nickname", ""), help="Used only in the company selection list.")
+        category = st.text_input("Category", value=company_category(original_company), help="Custom group name used to organize company profiles.")
         kepada_options = list(RECIPIENT_ADDRESSES)
         current_kepada = original_company.get("kepada", "Melaka")
         kepada = st.selectbox(
@@ -520,6 +626,13 @@ elif st.session_state.screen == "edit_company":
             else 0,
         )
         alamat = st.text_area("Address", value=original_company["alamat"])
+        default_remarks = get_default_remarks(original_company)
+        st.caption("Default remarks (same as the three remark sections on the certificate)")
+        default_remarks_inputs = [
+            st.text_area("Default remark 1", value=default_remarks[0], help="Prefilled in remark section 1."),
+            st.text_area("Default remark 2", value=default_remarks[1], help="Prefilled in remark section 2."),
+            st.text_area("Default remark 3", value=default_remarks[2], help="Prefilled in remark section 3."),
+        ]
         col1, col2, col3 = st.columns(3)
         with col1:
             giliran_no = st.text_input("Circuit No.", value=original_company["giliran_no"])
@@ -529,8 +642,14 @@ elif st.session_state.screen == "edit_company":
             ampere = st.text_input("Amperage", value=original_company["ampere"])
         submitted = st.form_submit_button("Save changes", type="primary")
     if submitted:
+        values = [remark.strip() for remark in default_remarks_inputs]
         company = {
             "klien": klien.strip(),
+            "company_name": klien.strip(),
+            "nickname": nickname.strip(),
+            "category": category.strip() or "Uncategorized",
+            "default_remark": values[0],
+            "default_remarks": values,
             "kepada": kepada,
             "alamat": alamat.strip(),
             "giliran_no": giliran_no.strip(),
@@ -538,8 +657,8 @@ elif st.session_state.screen == "edit_company":
             "ampere": ampere.strip(),
         }
         duplicate = any(
-            c["klien"].casefold() == company["klien"].casefold()
-            and c["klien"].casefold() != original_company["klien"].casefold()
+            company_name(c).casefold() == company_name(company).casefold()
+            and company_name(c).casefold() != company_name(original_company).casefold()
             for c in companies
         )
         if not all(company.values()):
@@ -547,7 +666,7 @@ elif st.session_state.screen == "edit_company":
         elif duplicate:
             st.error("That client is already registered.")
         else:
-            update_company(original_company["klien"], company)
+            update_company(company_name(original_company), company)
             st.session_state.pop("edit_company", None)
             st.session_state.selected_company = company
             st.session_state.screen = "report"
@@ -556,14 +675,15 @@ elif st.session_state.screen == "edit_company":
 elif st.session_state.screen == "report":
     company = st.session_state.selected_company
     st.header("New certificate")
-    st.caption(f"Company: {company['klien']}")
+    st.caption(f"Company: {company_name(company)}")
     report_date = st.date_input("Date", value=date.today())
     st.subheader("Remarks")
+    default_remarks = get_default_remarks(company)
     remarks = []
     for index in range(3):
         key = f"remark_section_{index}"
-        if key not in st.session_state or st.session_state[key].strip().casefold() == "1. tiada":
-            st.session_state[key] = "Tiada"
+        if key not in st.session_state:
+            st.session_state[key] = default_remarks[index].strip() or "Tiada"
         remarks.append(
             st.text_area(
                 f"Remark section {index + 1}",
@@ -583,47 +703,47 @@ elif st.session_state.screen == "report":
             st.session_state.generated_docx = generate_docx(company, report_date, remarks)
             st.session_state.generated_pdf = convert_to_pdf(st.session_state.generated_docx)
             st.session_state.share_text = create_share_text(company, report_date, remarks)
+            st.session_state.generated_date = report_date
             st.session_state.screen = "download"
             st.rerun()
 
 elif st.session_state.screen == "download":
     company = st.session_state.selected_company
     st.header("Document ready")
-    st.success(f"The document for {company['klien']} has been generated.")
+    st.success(f"The document for {company_name(company)} has been generated.")
     share_text = st.session_state.share_text
-    filename = "".join(c for c in company["klien"] if c.isalnum() or c in " _-").strip() or "borang"
-    st.download_button(
-        "Download Word (.docx)",
-        st.session_state.generated_docx,
-        file_name=f"{filename}.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        type="primary",
-    )
-    if st.session_state.generated_pdf:
-        st.download_button(
-            "Download PDF (.pdf)",
-            st.session_state.generated_pdf,
-            file_name=f"{filename}.pdf",
-            mime="application/pdf",
-        )
-    else:
-        st.button("Download PDF (.pdf)", disabled=True)
-        st.warning("PDF export is unavailable because the generated Word document could not be converted. Install LibreOffice and try again.")
-    st.subheader("Share certificate")
-    st.download_button(
-        "Download text summary (.txt)",
-        share_text,
-        file_name=f"{filename}.txt",
-        mime="text/plain",
-    )
-    encoded_share_text = quote(share_text)
-    share_col1, share_col2, share_col3 = st.columns(3)
-    with share_col1:
-        st.link_button("WhatsApp", f"https://wa.me/?text={encoded_share_text}")
-    with share_col2:
-        st.link_button("Telegram", f"https://t.me/share/url?url=&text={encoded_share_text}")
-    with share_col3:
-        st.link_button("Email", f"mailto:?subject={quote(f'Inspection Certificate - {company["klien"]}')}&body={encoded_share_text}")
+    filename = f"{sanitized_filename(company_name(company))}_{st.session_state.generated_date:%Y-%m-%d}"
+
+    col_primary_1, col_primary_2 = st.columns(2)
+    with col_primary_1:
+        st.download_button("Download Word (.docx)", st.session_state.generated_docx,
+                           file_name=f"{filename}.docx",
+                           mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                           use_container_width=True)
+    with col_primary_2:
+        if st.session_state.generated_pdf:
+            st.download_button("Download PDF (.pdf)", st.session_state.generated_pdf,
+                               file_name=f"{filename}.pdf", mime="application/pdf",
+                               use_container_width=True)
+        else:
+            st.info("PDF export unavailable", icon="ℹ️")
+
+    with st.popover("Export", use_container_width=True):
+        if st.button("Upload Word to Google Drive", use_container_width=True):
+            try:
+                st.session_state.drive_link = upload_to_google_drive(
+                    st.session_state.generated_docx, f"{filename}.docx",
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                )
+            except (RuntimeError, ValueError, KeyError, json.JSONDecodeError) as error:
+                st.error(str(error))
+        if st.session_state.get("drive_link"):
+            st.link_button("Open Google Drive file", st.session_state.drive_link, use_container_width=True)
+        st.link_button("Share via WhatsApp", f"https://wa.me/?text={quote(share_text)}", use_container_width=True)
+        st.download_button("Download text summary (.txt)", share_text,
+                           file_name=f"{filename}.txt", mime="text/plain", use_container_width=True)
     if st.button("Create another certificate"):
+        for index in range(3):
+            st.session_state.pop(f"remark_section_{index}", None)
         st.session_state.screen = "report"
         st.rerun()
