@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -14,11 +15,35 @@ from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 import pymupdf as fitz
 
+try:
+    from supabase import Client, create_client
+except ImportError:
+    Client = None
+    create_client = None
+
 
 BASE_DIR = Path(__file__).parent
 TEMPLATE_PATH = BASE_DIR / "sample.docx"
 COMPANIES_DIR = BASE_DIR / "companies"
 COMPANIES_DIR.mkdir(exist_ok=True)
+
+
+def get_secret(name):
+    value = os.getenv(name)
+    if value:
+        return value
+    try:
+        return st.secrets.get(name)
+    except (FileNotFoundError, KeyError):
+        return None
+
+
+def get_database():
+    if create_client is None:
+        return None
+    url = get_secret("SUPABASE_URL")
+    key = get_secret("SUPABASE_KEY")
+    return create_client(url, key) if url and key else None
 
 st.set_page_config(page_title="Inspection Certificate", layout="centered")
 
@@ -134,22 +159,45 @@ st.markdown(
 
 
 def load_companies():
+    database = get_database()
+    if database:
+        response = database.table("companies").select("data").order("name").execute()
+        if response.data:
+            return [row["data"] for row in response.data]
+
     companies = []
     for path in sorted(COMPANIES_DIR.glob("*.json")):
         try:
             companies.append(json.loads(path.read_text(encoding="utf-8")))
         except (OSError, json.JSONDecodeError):
             continue
+    if database and companies:
+        database.table("companies").upsert(
+            [{"name": company["klien"], "data": company} for company in companies],
+            on_conflict="name",
+        ).execute()
     return companies
 
 
 def save_company(company):
+    database = get_database()
+    if database:
+        database.table("companies").upsert(
+            {"name": company["klien"], "data": company}, on_conflict="name"
+        ).execute()
+        return
+
     safe_name = "".join(c for c in company["klien"] if c.isalnum() or c in " _-").strip()
     path = COMPANIES_DIR / f"{safe_name or 'company'}.json"
     path.write_text(json.dumps(company, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def delete_company(company):
+    database = get_database()
+    if database:
+        response = database.table("companies").delete().eq("name", company["klien"]).execute()
+        return bool(response.data)
+
     for path in COMPANIES_DIR.glob("*.json"):
         try:
             saved_company = json.loads(path.read_text(encoding="utf-8"))
