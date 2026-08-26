@@ -331,7 +331,7 @@ def generate_docx(company, report_date, remarks):
         paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
         paragraph.paragraph_format.left_indent = 0
         paragraph.paragraph_format.first_line_indent = 0
-    set_paragraph_text(recipient_paragraphs[0], f"Kepada\t:\t{recipient_lines[0]}")
+    set_paragraph_text(recipient_paragraphs[0], f"Kepada\t:\t {recipient_lines[0]}")
     for paragraph, line in zip(recipient_paragraphs[1:], recipient_lines[1:]):
         paragraph.paragraph_format.left_indent = Inches(0.4)
         set_paragraph_text(paragraph, line)
