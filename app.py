@@ -13,6 +13,7 @@ from urllib.parse import quote
 import streamlit as st
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Inches
 from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 import pymupdf as fitz
@@ -39,7 +40,7 @@ JALAN PERSEKUTUAN, MITC
 MELAKA DARUL AZIM
 TEL: 06 - 231 9594 / 9597
 FAKS: 06 - 231 9620""",
-    "Selangor": """PEJABAT KAWASAN NEGERI SEMBILAN & MELAKA
+    "Selangor": """PEJABAT KAWASAN N.SELANGOR & WP (KL&PUTRAJAYA)
 TINGKAT 10A, MENARA PKNS-PJ
 17, JALAN YONG SHOOK LIN
 46050 PETALING JAYA
@@ -332,6 +333,7 @@ def generate_docx(company, report_date, remarks):
         paragraph.paragraph_format.first_line_indent = 0
     set_paragraph_text(recipient_paragraphs[0], f"Kepada\t:\t{recipient_lines[0]}")
     for paragraph, line in zip(recipient_paragraphs[1:], recipient_lines[1:]):
+        paragraph.paragraph_format.left_indent = Inches(0.4)
         set_paragraph_text(paragraph, line)
     for field in ("klien", "giliran_no", "voltan", "ampere"):
         replace_runs(doc, refs[field], company[field])
