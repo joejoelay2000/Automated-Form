@@ -83,6 +83,17 @@ def company_category(company):
     return str(value).strip() or "Uncategorized"
 
 
+def category_options(companies):
+    categories = {"uncategorized": "Uncategorized"}
+    for company in companies:
+        category = company_category(company)
+        categories.setdefault(category.casefold(), category)
+    return [categories[key] for key in sorted(categories)]
+
+
+NEW_CATEGORY_OPTION = "Create new category..."
+
+
 def slugify(value):
     return re.sub(r"[^a-z0-9]+", "-", str(value).strip().lower()).strip("-") or "uncategorized"
 
@@ -498,16 +509,21 @@ if st.session_state.screen == "home":
     if companies:
         grouped_companies = {}
         for company in companies:
-            grouped_companies.setdefault(company_category(company), []).append(company)
+            category = company_category(company)
+            canonical_category = next(
+                (option for option in category_options(companies) if option.casefold() == category.casefold()),
+                "Uncategorized",
+            )
+            grouped_companies.setdefault(canonical_category, []).append(company)
         st.caption("Choose a company from the list below.")
-        for category in sorted(grouped_companies, key=str.casefold):
+        for category_index, category in enumerate(sorted(grouped_companies, key=str.casefold)):
             st.subheader(category)
             category_companies = grouped_companies[category]
             labels = [company_nickname(company) for company in category_companies]
             selected = st.radio(
                 f"Companies in {category}",
                 labels,
-                key=f"company_radio_{slugify(category)}",
+                key=f"company_radio_{category_index}",
                 label_visibility="collapsed",
             )
             selected_company = category_companies[labels.index(selected)]
@@ -563,7 +579,17 @@ elif st.session_state.screen == "create_company":
     with st.form("new_company"):
         klien = st.text_input("Client")
         nickname = st.text_input("Nickname", help="Used only in the company selection list.")
-        category = st.text_input("Category", value="Uncategorized", help="Custom group name used to organize company profiles.")
+        categories = category_options(companies)
+        category_choice = st.selectbox(
+            "Category",
+            categories + [NEW_CATEGORY_OPTION],
+            index=categories.index("Uncategorized"),
+        )
+        new_category = st.text_input(
+            "New category (used when selected above)",
+            key="new_category",
+        )
+        category = new_category if category_choice == NEW_CATEGORY_OPTION else category_choice
         kepada = st.selectbox("Kepada", list(RECIPIENT_ADDRESSES))
         alamat = st.text_area("Address")
         st.caption("Default remarks (same as the three remark sections on the certificate)")
@@ -615,7 +641,21 @@ elif st.session_state.screen == "edit_company":
     with st.form("edit_company_form"):
         klien = st.text_input("Client", value=company_name(original_company))
         nickname = st.text_input("Nickname", value=original_company.get("nickname", ""), help="Used only in the company selection list.")
-        category = st.text_input("Category", value=company_category(original_company), help="Custom group name used to organize company profiles.")
+        categories = category_options(companies)
+        current_category = company_category(original_company)
+        category_choice = st.selectbox(
+            "Category",
+            categories + [NEW_CATEGORY_OPTION],
+            index=next(
+                (index for index, option in enumerate(categories) if option.casefold() == current_category.casefold()),
+                0,
+            ),
+        )
+        new_category = st.text_input(
+            "New category (used when selected above)",
+            key="edit_new_category",
+        )
+        category = new_category if category_choice == NEW_CATEGORY_OPTION else category_choice
         kepada_options = list(RECIPIENT_ADDRESSES)
         current_kepada = original_company.get("kepada", "Melaka")
         kepada = st.selectbox(
