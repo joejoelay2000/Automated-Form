@@ -191,6 +191,12 @@ def github_request(method, path, payload=None):
         if error.code == 404:
             return None
         detail = error.read().decode("utf-8", errors="replace")
+        if error.code == 403:
+            raise RuntimeError(
+                "GitHub rejected the write request. Update the fine-grained token "
+                "permission for this repository to Contents: Read and write, then "
+                "replace GITHUB_TOKEN in Streamlit Secrets and reboot the app."
+            ) from error
         raise RuntimeError(f"GitHub storage request failed ({error.code}): {detail}") from error
     except URLError as error:
         raise RuntimeError(f"GitHub storage network request failed: {error.reason}") from error
@@ -749,10 +755,14 @@ elif st.session_state.screen == "create_company":
                 "voltan": voltan.strip(),
                 "ampere": ampere.strip(),
             }
-            save_company(company)
-            st.session_state.selected_company = company
-            st.session_state.screen = "report"
-            st.rerun()
+            try:
+                save_company(company)
+            except RuntimeError as error:
+                st.error(str(error))
+            else:
+                st.session_state.selected_company = company
+                st.session_state.screen = "report"
+                st.rerun()
 
 elif st.session_state.screen == "edit_company":
     original_company = st.session_state.edit_company
@@ -829,11 +839,15 @@ elif st.session_state.screen == "edit_company":
         elif duplicate:
             st.error("That client is already registered.")
         else:
-            update_company(company_name(original_company), company)
-            st.session_state.pop("edit_company", None)
-            st.session_state.selected_company = company
-            st.session_state.screen = "report"
-            st.rerun()
+            try:
+                update_company(company_name(original_company), company)
+            except RuntimeError as error:
+                st.error(str(error))
+            else:
+                st.session_state.pop("edit_company", None)
+                st.session_state.selected_company = company
+                st.session_state.screen = "report"
+                st.rerun()
 
 elif st.session_state.screen == "report":
     company = st.session_state.selected_company
