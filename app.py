@@ -205,6 +205,7 @@ def company_profile_filename(company_name_value):
     return f"{safe_name.strip() or 'company'}.json"
 
 
+@st.cache_data(ttl=300, show_spinner=False)
 def load_github_companies():
     files = github_request("GET", "companies")
     if files is None:
@@ -412,6 +413,7 @@ def save_company(company):
     github_token, github_repository, _ = get_github_config()
     if github_token and github_repository:
         save_github_company(company)
+        load_github_companies.clear()
         return
     database = get_database()
     if database:
@@ -433,7 +435,10 @@ def update_company(original_name, company):
 def delete_company(company):
     github_token, github_repository, _ = get_github_config()
     if github_token and github_repository:
-        return delete_github_company(company)
+        deleted = delete_github_company(company)
+        if deleted:
+            load_github_companies.clear()
+        return deleted
     database = get_database()
     if database:
         response = database.table("companies").delete().eq("name", company["klien"]).execute()
