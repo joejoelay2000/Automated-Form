@@ -1,0 +1,17 @@
+{
+  "klien": "WRITEBEST SDN. BHD",
+  "alamat": "LOT 2954 JLN SG TEKALI BT 1 1/2\nKAWASAN PERINDUSTRIAN TEKALI HULU LANGAT\n43100 HULU LANGAT\nSELANGOR",
+  "ampere": "50A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "WRITEBEST SDN. BHD",
+  "giliran_no": "1",
+  "company_name": "WRITEBEST SDN. BHD",
+  "default_remark": "To engage BO chargeman for this installation\nTx has minor oil leak , to check\nTo clean up MSB room",
+  "default_remarks": [
+    "To engage BO chargeman for this installation\nTx has minor oil leak , to check\nTo clean up MSB room",
+    "Tiada",
+    "Tiada"
+  ]
+}

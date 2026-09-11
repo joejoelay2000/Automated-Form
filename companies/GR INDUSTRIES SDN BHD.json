@@ -1,0 +1,17 @@
+{
+  "klien": "GR INDUSTRIES SDN BHD",
+  "alamat": "NO.1, JALAN BESTARI 1A/KU7, TAMAN PERINDUSTRIAN KAPAR BESTARI,\n42200 KLANG\nSELANGOR",
+  "ampere": "50A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "GR INDUSTRIES SDN BHD (GILIRAN NO.1)",
+  "giliran_no": "1",
+  "company_name": "GR INDUSTRIES SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

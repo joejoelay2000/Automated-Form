@@ -1,0 +1,17 @@
+{
+  "klien": "GUPPY PLASTIC INDUSTRIES SDN. BHD (BALAKONG)",
+  "alamat": "LOT 15-19, LORONG 3A, KAWASAN PERUSAHAAN CHERAS JAYA,\nBATU 9, JALAN BALAKONG,\n43200 CHERAS\nSELANGOR",
+  "ampere": "150A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 2",
+  "nickname": "GUPPY PLASTIC INDUSTRIES SDN BHD (BALAKONG) (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "GUPPY PLASTIC INDUSTRIES SDN. BHD (BALAKONG)",
+  "default_remark": "MSB: ACB for capacitor bank was off, to check.\nVCB/TX Room: To provide schematic diagram.\nMSB Room: To provide schematic diagram.",
+  "default_remarks": [
+    "MSB: ACB for capacitor bank was off, to check.\nVCB/TX Room: To provide schematic diagram.\nMSB Room: To provide schematic diagram.",
+    "Tiada",
+    "Tiada"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "klien": "SUPERMAX GLOVE MANUFACTURING SDN BHD",
+  "alamat": "LOT 38, PUTRA INDUSTRIAL PARK\nBUKIT RAHMAN PUTRA\n47000 SUNGAI BULOH\nSELANGOR",
+  "ampere": "172A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 1",
+  "nickname": "SUPERMAX GLOVE MANUFACTURING SDN BHD (Lot 38)",
+  "giliran_no": "1",
+  "company_name": "SUPERMAX GLOVE MANUFACTURING SDN BHD",
+  "default_remark": "Incoming: 11.2kV @ 10A, PF:0.92.",
+  "default_remarks": [
+    "Incoming: 11.2kV @ 10A, PF:0.92.",
+    "Tiada",
+    "Tiada"
+  ]
+}

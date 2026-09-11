@@ -1,0 +1,17 @@
+{
+  "klien": "IMPACT COLOR SDN BHD",
+  "alamat": "LOT PT 9377, JALAN BESAR, KG. BUKIT LANCHONG,\n47650 SUBANG JAYA\nSELANGOR",
+  "ampere": "700A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "IMPACT COLOR SDN BHD (SOLAR)",
+  "giliran_no": "1",
+  "company_name": "IMPACT COLOR SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

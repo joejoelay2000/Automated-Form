@@ -1,0 +1,17 @@
+{
+  "klien": "KINTETSU WORLD EXPRESS (MALAYSIA) SDN BHD",
+  "alamat": "KLIA CARGO VILLAGE, FREE COMMERCIAL ZONE FCZ, JALAN KLIA S3,\n64000 SEPANG\nSELANGOR",
+  "ampere": "1152A",
+  "kepada": "Selangor",
+  "voltan": "415V Genset",
+  "category": "Part 1",
+  "nickname": "KINTETSU WORLD EXPRESS (MALAYSIA) SDN BHD",
+  "giliran_no": "1",
+  "company_name": "KINTETSU WORLD EXPRESS (MALAYSIA) SDN BHD",
+  "default_remark": "To provide schematic diagram with Professional Engineer endorsement at the Genset area.",
+  "default_remarks": [
+    "To provide schematic diagram with Professional Engineer endorsement at the Genset area.",
+    "Tiada",
+    "Tiada"
+  ]
+}

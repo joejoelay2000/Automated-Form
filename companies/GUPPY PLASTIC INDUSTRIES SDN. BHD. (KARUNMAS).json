@@ -1,0 +1,17 @@
+{
+  "klien": "GUPPY PLASTIC INDUSTRIES SDN. BHD. (KARUNMAS)",
+  "alamat": "LOT 37651, JALAN KARUNMAS, TAMAN DESA KARUNMAS,\n43000 BALAKONG\nSELANGOR",
+  "ampere": "75A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "GUPPY PLASTIC INDUSTRIES SDN. BHD. (KARUNMAS) (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "GUPPY PLASTIC INDUSTRIES SDN. BHD. (KARUNMAS)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

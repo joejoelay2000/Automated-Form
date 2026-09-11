@@ -1,0 +1,17 @@
+{
+  "klien": "AHIMSA VEGE HEALTH FOOD INDUSTRIES SDN BHD (SOLAR)",
+  "alamat": "No. 17, JALAN KESUMA 2/3, BANDAR TASIK KESUMA,\n43700 BERANANG\nSELANGOR",
+  "ampere": "400A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "AHIMSA VEGE HEALTH FOOD INDUSTRIES SDN BHD (SOLAR)",
+  "giliran_no": "1",
+  "company_name": "AHIMSA VEGE HEALTH FOOD INDUSTRIES SDN BHD (SOLAR)",
+  "default_remark": "MSB Solar: 423/423/423V. 223/223/222A. PF=-0.99.\nTo improve house keeping.",
+  "default_remarks": [
+    "MSB Solar: 423/423/423V. 223/223/222A. PF=-0.99.\nTo improve house keeping.",
+    "Tiada",
+    "Tiada"
+  ]
+}

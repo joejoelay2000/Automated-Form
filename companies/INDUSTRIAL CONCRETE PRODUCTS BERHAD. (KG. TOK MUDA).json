@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD. (KG. TOK MUDA)",
+  "alamat": "BATU 12 1/2 KG. TOK MUDA\n42200 KAPAR\nSELANGOR",
+  "ampere": "100A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 2",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KG. TOK MUDA) (GILIRAN NO.2)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD. (KG. TOK MUDA)",
+  "default_remark": "Loading: 11.2kV @ <10A.\nGenset run: 134.88hr @ 63.2kWh.",
+  "default_remarks": [
+    "Loading: 11.2kV @ <10A.\nGenset run: 134.88hr @ 63.2kWh.",
+    "Tiada",
+    "Tiada"
+  ]
+}

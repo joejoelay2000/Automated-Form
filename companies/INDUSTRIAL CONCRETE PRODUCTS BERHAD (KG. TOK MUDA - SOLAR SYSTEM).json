@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KG. TOK MUDA - SOLAR SYSTEM)",
+  "alamat": "BATU 121/2 KG. TOK MUDA\n42200 KAPAR\nSELANGOR",
+  "ampere": "800A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KG. TOK MUDA - SOLAR SYSTEM)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KG. TOK MUDA - SOLAR SYSTEM)",
+  "default_remark": "PV MSB's DPM reading is not tally with the DPM of MSB, to check.",
+  "default_remarks": [
+    "PV MSB's DPM reading is not tally with the DPM of MSB, to check.",
+    "Tiada",
+    "Tiada"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "klien": "ZCAL TECHNOLOGY MALAYSIA SDN BHD (KAPAR)",
+  "alamat": "LOT 5997, JALAN KAPAR BATU 8, TAMAN SUNGAI KAPAR INDAH\n42200 KAPAR\nSELANGOR",
+  "ampere": "1000A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 1",
+  "nickname": "ZCAL TECHNOLOGY MALAYSIA SDN BHD (KAPAR)",
+  "giliran_no": "1",
+  "company_name": "ZCAL TECHNOLOGY MALAYSIA SDN BHD (KAPAR)",
+  "default_remark": "To display single line diagram with PE endorsement.",
+  "default_remarks": [
+    "To display single line diagram with PE endorsement.",
+    "Tiada",
+    "Tiada"
+  ]
+}

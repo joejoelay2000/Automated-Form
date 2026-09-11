@@ -1,0 +1,17 @@
+{
+  "klien": "EKSPEDISI EMAS SDN. BHD.",
+  "alamat": "LOT 37652 JALAN KARUNMAS\nTAMAN DESA KARUNMAS\n43300 BALAKONG\nSELANGOR",
+  "ampere": "116A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "EKSPEDISI EMAS SDN. BHD. (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "EKSPEDISI EMAS SDN. BHD.",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

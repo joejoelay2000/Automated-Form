@@ -1,0 +1,17 @@
+{
+  "klien": "ORIENTAL SAN INDUSTRIES SDN. BHD.",
+  "alamat": "PT 2486\nKAWASAN PERINDUSTRIAN NILAI\n71800 NILAI\nNEGERI SEMBILAN",
+  "ampere": "150A",
+  "kepada": "Melaka",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "ORIENTAL SAN INDUSTRIES SDN. BHD.  (GILIRAN NO.2 NEGERI SEMBILAN)",
+  "giliran_no": "2",
+  "company_name": "ORIENTAL SAN INDUSTRIES SDN. BHD.",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

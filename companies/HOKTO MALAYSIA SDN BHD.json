@@ -1,0 +1,17 @@
+{
+  "klien": "HOKTO MALAYSIA SDN BHD",
+  "alamat": "LOT 34652 & 34653, PERSIARAN TEKNOLOGI 4,\nTECHPARK@ENSTEK\n71760 BANDAR BARU ENSTEK\nNEGERI SEMBILAN",
+  "ampere": "150A",
+  "kepada": "Melaka",
+  "voltan": "11kV",
+  "category": "Part 1",
+  "nickname": "HOKTO MALAYSIA SDN BHD (GILIRAN NO.1)",
+  "giliran_no": "1",
+  "company_name": "HOKTO MALAYSIA SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

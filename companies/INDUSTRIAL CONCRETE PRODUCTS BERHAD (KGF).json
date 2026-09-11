@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KGF)",
+  "alamat": "LOT 22936, BATU 6, JALAN KEBUN, KG. JAWA,\n42450 KLANG\nSELANGOR",
+  "ampere": "1000A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KGF)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (KGF)",
+  "default_remark": "Electrical loading: 253.0V @ 0.99A. PF: 0.91.",
+  "default_remarks": [
+    "Electrical loading: 253.0V @ 0.99A. PF: 0.91.",
+    "Tiada",
+    "Tiada"
+  ]
+}

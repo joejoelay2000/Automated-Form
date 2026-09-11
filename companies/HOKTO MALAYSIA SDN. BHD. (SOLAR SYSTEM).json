@@ -1,0 +1,17 @@
+{
+  "klien": "HOKTO MALAYSIA SDN. BHD. (SOLAR SYSTEM)",
+  "alamat": "NO. 19, LENGKUK TEKNOLOGI 4, TAMAN TEKNOLOGI ENSTEK,\n71760 BANDAR BARU ENSTEK\nNEGERI SEMBILAN",
+  "ampere": "972A",
+  "kepada": "Melaka",
+  "voltan": "400V",
+  "category": "Part 1",
+  "nickname": "HOKTO MALAYSIA SDN. BHD. (SOLAR SYSTEM)",
+  "giliran_no": "1",
+  "company_name": "HOKTO MALAYSIA SDN. BHD. (SOLAR SYSTEM)",
+  "default_remark": "Protection relay recalibration will expire on 29-08-2027.",
+  "default_remarks": [
+    "Protection relay recalibration will expire on 29-08-2027.",
+    "Tiada",
+    "Tiada"
+  ]
+}

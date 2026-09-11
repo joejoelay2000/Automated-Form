@@ -1,0 +1,17 @@
+{
+  "klien": "MNA METAL RESOURCES SDN BHD",
+  "alamat": "112, JALAN 1/4, ARAB MALAYSIAN INDUSTRIAL PARK,\n71800 NILAI\nNEGERI SEMBILAN",
+  "ampere": "1200A",
+  "kepada": "Melaka",
+  "voltan": "400V",
+  "category": "Part 3",
+  "nickname": "MNA METAL RESOURCES SDN BHD",
+  "giliran_no": "1",
+  "company_name": "MNA METAL RESOURCES SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "klien": "RHONE MA MALAYSIA SDN BHD",
+  "alamat": "LOT 16008, JALAN NILAM 3\nKAWASAN PERINDUSTRIAN NILAI UTAMA\n71800 NILAI\nNEGERI SEMBILAN",
+  "ampere": "100A",
+  "kepada": "Melaka",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "RHONE MA MALAYSIA SDN BHD ( NEGERI SEMBILAN) ( GILIRAN NO.1)",
+  "giliran_no": "1",
+  "company_name": "RHONE MA MALAYSIA SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

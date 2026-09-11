@@ -1,0 +1,17 @@
+{
+  "klien": "TOPMARK PETROLEUM PRODUCTS SDN BHD",
+  "alamat": "LOT 102521 (PN24351) JLN SG PINANG 5/3 (KS13)\nPULAU INDAH, MUKIM KLANG, DAERAH KLANG KLANG BANDAR DIRAJA\n41050 KLANG\nSELANGOR",
+  "ampere": "100A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "TOPMARK PETROLEUM PRODUCTS SDN BHD (KLANG)",
+  "giliran_no": "1",
+  "company_name": "TOPMARK PETROLEUM PRODUCTS SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

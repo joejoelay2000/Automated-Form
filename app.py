@@ -5,10 +5,13 @@ import re
 import shutil
 import subprocess
 import tempfile
+import base64
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
 from urllib.parse import quote
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
 
 import streamlit as st
 from docx import Document
@@ -155,6 +158,101 @@ def get_database():
     )
     return create_client(url, key) if url and key else None
 
+
+def get_github_config():
+    token = get_secret("GITHUB_TOKEN")
+    repository = get_secret("GITHUB_REPOSITORY")
+    branch = get_secret("GITHUB_BRANCH") or "main"
+    return token, repository, branch
+
+
+def github_request(method, path, payload=None):
+    token, repository, branch = get_github_config()
+    if not token or not repository:
+        return None
+    encoded_path = quote(path, safe="/")
+    url = f"https://api.github.com/repos/{repository}/contents/{encoded_path}"
+    if method == "GET" and branch:
+        url = f"{url}?ref={quote(branch)}"
+    request = Request(
+        url,
+        method=method,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+        data=json.dumps(payload).encode("utf-8") if payload is not None else None,
+    )
+    try:
+        with urlopen(request, timeout=20) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        if error.code == 404:
+            return None
+        detail = error.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"GitHub storage request failed ({error.code}): {detail}") from error
+
+
+def github_file_path(company_name_value):
+    return f"companies/{company_profile_filename(company_name_value)}"
+
+
+def company_profile_filename(company_name_value):
+    safe_name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "", str(company_name_value))
+    return f"{safe_name.strip() or 'company'}.json"
+
+
+def load_github_companies():
+    files = github_request("GET", "companies")
+    if files is None:
+        return []
+    companies = []
+    for file_info in files:
+        if file_info.get("type") != "file" or not file_info.get("name", "").endswith(".json"):
+            continue
+        contents = github_request("GET", file_info["path"])
+        if not contents or not contents.get("content"):
+            continue
+        try:
+            decoded = base64.b64decode(contents["content"]).decode("utf-8")
+            companies.append(json.loads(decoded))
+        except (ValueError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+    return companies
+
+
+def save_github_company(company):
+    path = github_file_path(company["klien"])
+    existing = github_request("GET", path)
+    payload = {
+        "message": f"Update company: {company['klien']}",
+        "content": base64.b64encode(
+            json.dumps(company, ensure_ascii=False, indent=2).encode("utf-8")
+        ).decode("ascii"),
+        "branch": get_github_config()[2],
+    }
+    if existing and existing.get("sha"):
+        payload["sha"] = existing["sha"]
+    github_request("PUT", path, payload)
+
+
+def delete_github_company(company):
+    path = github_file_path(company["klien"])
+    existing = github_request("GET", path)
+    if not existing or not existing.get("sha"):
+        return False
+    github_request(
+        "DELETE",
+        path,
+        {
+            "message": f"Delete company: {company['klien']}",
+            "sha": existing["sha"],
+            "branch": get_github_config()[2],
+        },
+    )
+    return True
+
 st.set_page_config(page_title="Inspection Certificate", layout="centered")
 
 st.markdown(
@@ -269,6 +367,9 @@ st.markdown(
 
 
 def load_companies():
+    github_token, github_repository, _ = get_github_config()
+    if github_token and github_repository:
+        return load_github_companies()
     database = get_database()
     if database:
         try:
@@ -297,6 +398,10 @@ def load_companies():
 
 
 def save_company(company):
+    github_token, github_repository, _ = get_github_config()
+    if github_token and github_repository:
+        save_github_company(company)
+        return
     database = get_database()
     if database:
         database.table("companies").upsert(
@@ -304,8 +409,7 @@ def save_company(company):
         ).execute()
         return
 
-    safe_name = "".join(c for c in company["klien"] if c.isalnum() or c in " _-").strip()
-    path = COMPANIES_DIR / f"{safe_name or 'company'}.json"
+    path = COMPANIES_DIR / company_profile_filename(company["klien"])
     path.write_text(json.dumps(company, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
@@ -316,6 +420,9 @@ def update_company(original_name, company):
 
 
 def delete_company(company):
+    github_token, github_repository, _ = get_github_config()
+    if github_token and github_repository:
+        return delete_github_company(company)
     database = get_database()
     if database:
         response = database.table("companies").delete().eq("name", company["klien"]).execute()

@@ -1,0 +1,17 @@
+{
+  "klien": "DURABON SDN. BHD",
+  "alamat": "LOT 22936\nBATU 6, JALAN KEBUN KAMPUNG JAWA MUKIM\n42450 KLANG\nSELANGOR",
+  "ampere": "250A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 2",
+  "nickname": "DURABON SDN BHD (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "DURABON SDN. BHD",
+  "default_remark": "Loading: 11.30kV, 10A. PF:0.94",
+  "default_remarks": [
+    "Loading: 11.30kV, 10A. PF:0.94",
+    "Tiada",
+    "Tiada"
+  ]
+}

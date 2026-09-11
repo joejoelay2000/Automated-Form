@@ -1,0 +1,17 @@
+{
+  "klien": "RHONE MA MALAYSIA SDN BHD.",
+  "alamat": "LOT 18B, JALAN 241,\nSEKSYEN 51A,\n46100 PETALING JAYA\nSELANGOR",
+  "ampere": "3x200A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 3",
+  "nickname": "RHONE MA MALAYSIA SDN BHD. (SELANGOR)",
+  "giliran_no": "1",
+  "company_name": "RHONE MA MALAYSIA SDN BHD.",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

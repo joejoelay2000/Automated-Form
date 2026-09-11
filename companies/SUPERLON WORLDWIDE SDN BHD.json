@@ -1,0 +1,17 @@
+{
+  "klien": "SUPERLON WORLDWIDE SDN BHD",
+  "alamat": "LOT 2567, JALAN SUNGAI JATI,\n41200 KLANG\nSELANGOR",
+  "ampere": "200A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "SUPERLON WORLDWIDE SDN BHD",
+  "giliran_no": "1",
+  "company_name": "SUPERLON WORLDWIDE SDN BHD",
+  "default_remark": "Recommend to service all the VCB, TX, ACB and 30V DC Battery Unit as the last service was on 2022.",
+  "default_remarks": [
+    "Recommend to service all the VCB, TX, ACB and 30V DC Battery Unit as the last service was on 2022.",
+    "Tiada",
+    "Tiada"
+  ]
+}

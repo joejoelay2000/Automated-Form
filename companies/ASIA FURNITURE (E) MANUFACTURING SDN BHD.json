@@ -1,0 +1,17 @@
+{
+  "klien": "ASIA FURNITURE (E) MANUFACTURING SDN BHD",
+  "alamat": "LOT 1857 & 8381, KAWASAN PERUSAHAAN BUKIT ANGKAT SG. CHUA,\n43000 KAJANG\nSELANGOR",
+  "ampere": "2x800A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 3",
+  "nickname": "ASIA FURNITURE (E) MANUFACTURING SDN BHD",
+  "giliran_no": "1",
+  "company_name": "ASIA FURNITURE (E) MANUFACTURING SDN BHD",
+  "default_remark": "To change all “Danger” and “No Admittance” signboards at all doors for MSB’s\nF1 PF 0.95, F2 0.99",
+  "default_remarks": [
+    "To change all “Danger” and “No Admittance” signboards at all doors for MSB’s\nF1 PF 0.95, F2 0.99",
+    "Tiada",
+    "Tiada"
+  ]
+}

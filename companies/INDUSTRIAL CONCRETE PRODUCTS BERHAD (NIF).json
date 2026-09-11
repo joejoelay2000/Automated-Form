@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (NIF)",
+  "alamat": "LOT 5777, NILAI INDUSTRIAL ESTATE, KAWASAN PERINDUSTRI NILAI 1,\n71800 NILAI\nNEGERI SEMBILAN",
+  "ampere": "2X1000A",
+  "kepada": "Melaka",
+  "voltan": "400V",
+  "category": "Part 1",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (NIF)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (NIF)",
+  "default_remark": "Feeder 1: 247.5V 172.0A PF: 0.96.\nFeeder 2: 249.5V 115.0A PF: 0.94.\nGenset run: 238.5hr @ 45.0kWh.",
+  "default_remarks": [
+    "Feeder 1: 247.5V 172.0A PF: 0.96.\nFeeder 2: 249.5V 115.0A PF: 0.94.\nGenset run: 238.5hr @ 45.0kWh.",
+    "Tiada",
+    "Tiada"
+  ]
+}

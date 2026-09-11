@@ -1,0 +1,17 @@
+{
+  "klien": "EXPRESS AUDIO INDUSTRY SDN. BHD.",
+  "alamat": "LOT. 19089, NO. 6, JALAN TAMING 1,\nTAMAN TAMING JAYA,\n43300 BALAKONG\nSELANGOR",
+  "ampere": "60A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "EXPRESS AUDIO INDUSTRY SDN. BHD. (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "EXPRESS AUDIO INDUSTRY SDN. BHD.",
+  "default_remark": "To clean up MSB room",
+  "default_remarks": [
+    "To clean up MSB room",
+    "Tiada",
+    "Tiada"
+  ]
+}

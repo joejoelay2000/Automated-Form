@@ -1,0 +1,17 @@
+{
+  "klien": "PERBADANAN PENGURUSAN THE USJ 19 CITY MALL",
+  "alamat": "AT RL 2.172, THE 19 USJ CITY MALL,\nJALAN PERSIARAN KEWAJIPAN USJ 19,\n47620 SUBANG JAYA\nSELANGOR",
+  "ampere": "2x300A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 2",
+  "nickname": "PERBADANAN PENGURUSAN THE USJ 19 CITY MALL (GILIRAN NO.1)",
+  "giliran_no": "1",
+  "company_name": "PERBADANAN PENGURUSAN THE USJ 19 CITY MALL",
+  "default_remark": "To register installation with Energy Comission.\nTo display single line diagram with Professional Engineer endorsement.\nTo engage a competent chargeman for the installation operation.\nTo check and rectify all the capacitor banks for MSBs to avoid TNB's penalty.\nTo fix all faulty exhaust fans for HT and LV rooms.",
+  "default_remarks": [
+    "To register installation with Energy Comission.\nTo display single line diagram with Professional Engineer endorsement.\nTo engage a competent chargeman for the installation operation.\nTo check and rectify all the capacitor banks for MSBs to avoid TNB's penalty.\nTo fix all faulty exhaust fans for HT and LV rooms.",
+    "To reinstate all discharge CO2 cylinders.\nTo service all the switchgears and transformers.\nTo repair faulty protection relay.\nTo repair all malfunction capacitor bank.",
+    "Tiada"
+  ]
+}

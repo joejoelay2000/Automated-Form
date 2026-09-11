@@ -1,0 +1,17 @@
+{
+  "klien": "MALAYSIA ASSOCIATED FOR THE BLIND",
+  "alamat": "Komplek MAB, Jalan Tebing. Off Jalan Sambanthan 4,\n50470 KUALA LUMPUR\nWILAYAH PERSEKUTUAN KUALA LUMPUR",
+  "ampere": "500A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "MALAYSIA ASSOCIATED FOR THE BLIND",
+  "giliran_no": "1",
+  "company_name": "MALAYSIA ASSOCIATED FOR THE BLIND",
+  "default_remark": "Electrical loading: 245V @ 30A, PF:0.95.",
+  "default_remarks": [
+    "Electrical loading: 245V @ 30A, PF:0.95.",
+    "Tiada",
+    "Tiada"
+  ]
+}

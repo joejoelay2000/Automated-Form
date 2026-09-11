@@ -1,0 +1,17 @@
+{
+  "klien": "K-FLEX. (KILANG C)",
+  "alamat": "LOT 2751\nJALAN RAJA NONG\nTAMAN KLANG JAYA\n41200 KLANG\nSELANGOR",
+  "ampere": "120A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 2",
+  "nickname": "K-FLEX (KILANG C) (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "K-FLEX. (KILANG C)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "klien": "GT-MAX PLASTIC INDUSTRIES (M) SDN. BHD. (F12)",
+  "alamat": "NO. 1, 3 & 5, JALAN BESTARI 1A/KU7, TAMAN PERINDUSTRIES KAPAR BESTARI,\n42200 KLANG\nSELANGOR",
+  "ampere": "50A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "GT-MAX PLASTIC INDUSTRIES (M) SDN. BHD. (F12) (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "GT-MAX PLASTIC INDUSTRIES (M) SDN. BHD. (F12)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

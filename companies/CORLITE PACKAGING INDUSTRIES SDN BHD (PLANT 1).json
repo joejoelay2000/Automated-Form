@@ -1,0 +1,17 @@
+{
+  "klien": "CORLITE PACKAGING INDUSTRIES SDN BHD (PLANT 1)",
+  "alamat": "NO. 6, JALAN WAWASAN 1, KAWASAN PERINDUSTRIAN SG. KAPAR INDAH\n42200 KLANG\nSELANGOR",
+  "ampere": "300A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "CORLITE PACKAGING INDUSTRIES SDN BHD (PLANT 1)",
+  "giliran_no": "1",
+  "company_name": "CORLITE PACKAGING INDUSTRIES SDN BHD (PLANT 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

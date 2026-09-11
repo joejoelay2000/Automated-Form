@@ -1,0 +1,17 @@
+{
+  "klien": "THREE V HOLDINGS SDN BHD",
+  "alamat": "LOT 8361 & 8382   KAWASAN PERUMAHAN BUKIT ANGKAT\nSG CHUA \n43000 KAJANG \nSELANGOR",
+  "ampere": "1600A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 3",
+  "nickname": "THREE V HOLDINGS SDN BHD",
+  "giliran_no": "1",
+  "company_name": "THREE V HOLDINGS SDN BHD",
+  "default_remark": "A charge-man of grade “A4” is required to operate the installations and Gen Sets.\nFEEDER 1 PF 0.92 FEEDER 2 PF 0.93",
+  "default_remarks": [
+    "A charge-man of grade “A4” is required to operate the installations and Gen Sets.\nFEEDER 1 PF 0.92 FEEDER 2 PF 0.93",
+    "Tiada",
+    "Tiada"
+  ]
+}

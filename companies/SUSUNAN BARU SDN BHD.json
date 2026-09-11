@@ -1,0 +1,17 @@
+{
+  "klien": "SUSUNAN BARU SDN BHD",
+  "alamat": "TINGKAT 4, WISMA CHEONG HIN, NO. 116 -118, JALAN PUDU\n55100 KUALA LUMPUR\nWILAYAH PERSEKUTUAN KUALA LUMPUR",
+  "ampere": "500A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "SUSUNAN BARU SDN BHD",
+  "giliran_no": "1",
+  "company_name": "SUSUNAN BARU SDN BHD",
+  "default_remark": "Protection relay recalibration will expire on 23-07-2027.\nGenset registration expired on 10-06-2026.",
+  "default_remarks": [
+    "Protection relay recalibration will expire on 23-07-2027.\nGenset registration expired on 10-06-2026.",
+    "Tiada",
+    "Tiada"
+  ]
+}

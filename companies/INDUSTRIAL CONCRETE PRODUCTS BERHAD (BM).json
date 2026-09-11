@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BM)",
+  "alamat": "LOT 22936, BATU 6, JALAN KEBUN, KG. JAWA,\n42450 KLANG\nSELANGOR",
+  "ampere": "1000A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BM)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BM)",
+  "default_remark": "Loading: 245V @ 100A. PF:0.90.",
+  "default_remarks": [
+    "Loading: 245V @ 100A. PF:0.90.",
+    "Tiada",
+    "Tiada"
+  ]
+}

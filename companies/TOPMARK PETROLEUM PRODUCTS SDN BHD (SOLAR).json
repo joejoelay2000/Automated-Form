@@ -1,0 +1,17 @@
+{
+  "klien": "TOPMARK PETROLEUM PRODUCTS SDN BHD (SOLAR)",
+  "alamat": "NO. 102521, JALAN SUNGAI PINANG 5/3, KAWASAN PERINDUSTRIAN PULAU INDAH, PELABUHAN KLANG,\n42920 KLANG\nSELANGOR",
+  "ampere": "500A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "TOPMARK PETROLEUM PRODUCTS SDN BHD (SOLAR)",
+  "giliran_no": "1",
+  "company_name": "TOPMARK PETROLEUM PRODUCTS SDN BHD (SOLAR)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

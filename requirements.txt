@@ -2,3 +2,5 @@ streamlit
 python-docx
 PyMuPDF
 supabase
+google-api-python-client
+google-auth

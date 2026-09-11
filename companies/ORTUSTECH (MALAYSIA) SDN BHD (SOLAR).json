@@ -1,0 +1,17 @@
+{
+  "klien": "ORTUSTECH (MALAYSIA) SDN BHD (SOLAR)",
+  "alamat": "LOT 760, JALAN HAJI SIRAT, OFF JALAN KAPAR,\n42100 KLANG\nSELANGOR",
+  "ampere": "300A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "ORTUSTECH (MALAYSIA) SDN BHD (SOLAR)",
+  "giliran_no": "1",
+  "company_name": "ORTUSTECH (MALAYSIA) SDN BHD (SOLAR)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

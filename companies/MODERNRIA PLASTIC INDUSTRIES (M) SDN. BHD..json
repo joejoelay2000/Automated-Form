@@ -1,0 +1,17 @@
+{
+  "klien": "MODERNRIA PLASTIC INDUSTRIES (M) SDN. BHD.",
+  "alamat": "LOT 5, PERSIARAN PERUSAHAAN, SEKSYEN 23,\n40000 SHAH ALAM\nSELANGOR",
+  "ampere": "200A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 3",
+  "nickname": "MODERNRIA PLASTIC INDUSTRIES (M) SDN. BHD. (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "MODERNRIA PLASTIC INDUSTRIES (M) SDN. BHD.",
+  "default_remark": "Suruhanjaya Tenaga registration was expired on 11-09-2024. To renew.\nTo recalibrate protection relay expired on 21-08-2024.",
+  "default_remarks": [
+    "Suruhanjaya Tenaga registration was expired on 11-09-2024. To renew.\nTo recalibrate protection relay expired on 21-08-2024.",
+    "Tiada",
+    "Tiada"
+  ]
+}

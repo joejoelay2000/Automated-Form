@@ -1,0 +1,17 @@
+{
+  "klien": "GLOWMORE EXPRESS SDN BHD",
+  "alamat": "LOT 4248, JALAN SULTAN HISHAMUDDIN 2, BANDAR SULTAN SULEIMAN,\n42000 PELABOHAN KELANG\nSELANGOR",
+  "ampere": "800A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "GLOWMORE EXPRESS SDN BHD",
+  "giliran_no": "1",
+  "company_name": "GLOWMORE EXPRESS SDN BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

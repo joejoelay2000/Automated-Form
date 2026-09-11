@@ -1,0 +1,17 @@
+{
+  "klien": "SHINOBE (M) SDN BHD",
+  "alamat": "LOT 2, JALAN UTARID U5/16, MUTIARA SUBANG, SEKSYEN U5,\nSeksyen U5\n40150 SHAH ALAM\nSELANGOR",
+  "ampere": "800A",
+  "kepada": "Selangor",
+  "voltan": "400V SOLAR",
+  "category": "Part 3",
+  "nickname": "SHINOBE (M) SDN BHD",
+  "giliran_no": "1",
+  "company_name": "SHINOBE (M) SDN BHD",
+  "default_remark": "Relay calibration over due 28-3-26",
+  "default_remarks": [
+    "Relay calibration over due 28-3-26",
+    "Tiada",
+    "Tiada"
+  ]
+}

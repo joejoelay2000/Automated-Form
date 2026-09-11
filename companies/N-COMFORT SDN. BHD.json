@@ -1,0 +1,17 @@
+{
+  "klien": "N-COMFORT SDN. BHD",
+  "alamat": "LOT 15796 JALAN KEBUN BATU 5 1/2\n40460 SHAH ALAM\nSELANGOR",
+  "ampere": "150A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "Part 1",
+  "nickname": "N-COMFORT SDN BHD (GILIRAN NO.2)",
+  "giliran_no": "2",
+  "company_name": "N-COMFORT SDN. BHD",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ]
+}

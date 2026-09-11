@@ -1,0 +1,17 @@
+{
+  "klien": "SUN POWER AUTOMATION SDN BHD",
+  "alamat": "LOT 1554, KAMPUNG JAYA INDUSTRIAL AREA,\n47000 SUNGAI BULOH\nSELANGOR",
+  "ampere": "1200A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 1",
+  "nickname": "SUN POWER AUTOMATION SDN BHD",
+  "giliran_no": "1",
+  "company_name": "SUN POWER AUTOMATION SDN BHD",
+  "default_remark": "Consumer MSB: 422.8/422.6/422.1V. 85.4/87.9/68.5A. PF:0.95.\nSSB: 422.3/421.4/422.2V. 69.2/65.7/68.2A. PF:0.92.\nRecalibration protection relay will expire on 26-10-2026.",
+  "default_remarks": [
+    "Consumer MSB: 422.8/422.6/422.1V. 85.4/87.9/68.5A. PF:0.95.\nSSB: 422.3/421.4/422.2V. 69.2/65.7/68.2A. PF:0.92.\nRecalibration protection relay will expire on 26-10-2026.",
+    "Tiada",
+    "Tiada"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "klien": "CENTRO PROPERTIES GROUP SDN BHD",
+  "alamat": "8, JALAN BATU TIGA LAMA\n41300 KLANG\nSELANGOR",
+  "ampere": "300A",
+  "kepada": "Selangor",
+  "voltan": "11kV",
+  "category": "part 3",
+  "nickname": "CENTRO PROPERTIES GROUP SDN BHD",
+  "giliran_no": "1",
+  "company_name": "CENTRO PROPERTIES GROUP SDN BHD",
+  "default_remark": "Electrical loading: 11.2kV @ 120A.\nGenset run:482.03hr @ 28.6kWh.\nTo update the schematic diagram for MSB, EMSB 1&2.\n1 unit of OC/EF protection relay faulty at 11kV VCB room, to check and replace.",
+  "default_remarks": [
+    "Electrical loading: 11.2kV @ 120A.\nGenset run:482.03hr @ 28.6kWh.\nTo update the schematic diagram for MSB, EMSB 1&2.\n1 unit of OC/EF protection relay faulty at 11kV VCB room, to check and replace.",
+    "Tiada",
+    "Tiada"
+  ]
+}

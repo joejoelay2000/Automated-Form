@@ -1,0 +1,17 @@
+{
+  "klien": "GUPPY PLASTIC INDUSTRIES SDN BHD (BALAKONG - SOLAR)",
+  "alamat": "LOT 15-19, LORONG 3A, KAWASAN PERUSAHAAN CHERAS JAYA,\nBATU 9, JALAN BALAKONG,\n43200 CHERAS\nSELANGOR",
+  "ampere": "1000A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "GUPPY PLASTIC INDUSTRIES SDN BHD (BALAKONG - SOLAR)",
+  "giliran_no": "1",
+  "company_name": "GUPPY PLASTIC INDUSTRIES SDN BHD (BALAKONG - SOLAR)",
+  "default_remark": "To provide schematic diagram.\nLoading: 420/421/411V, 431/413/412A, PF: -0.995.",
+  "default_remarks": [
+    "To provide schematic diagram.\nLoading: 420/421/411V, 431/413/412A, PF: -0.995.",
+    "Tiada",
+    "Tiada"
+  ]
+}

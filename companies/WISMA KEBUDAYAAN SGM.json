@@ -1,0 +1,17 @@
+{
+  "klien": "WISMA KEBUDAYAAN SGM",
+  "alamat": "243\nJALAN BUKIT BINTANG\n55100 KUALA LUMPUR\nWILAYAH PERSEKUTUAN KUALA LUMPUR",
+  "ampere": "2x1200A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "WISMA KEBUDAYAAN SGM",
+  "giliran_no": "1",
+  "company_name": "WISMA KEBUDAYAAN SGM",
+  "default_remark": "MSB 1: 415V, 125A, PF:0.92.\nMSB 2: 415V, 70A, PF:0.93.\nGenerator set run 68.78hr @ 19.0kWh.",
+  "default_remarks": [
+    "MSB 1: 415V, 125A, PF:0.92.\nMSB 2: 415V, 70A, PF:0.93.\nGenerator set run 68.78hr @ 19.0kWh.",
+    "Tiada",
+    "Tiada"
+  ]
+}

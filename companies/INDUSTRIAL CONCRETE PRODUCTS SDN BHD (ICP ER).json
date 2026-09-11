@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS SDN BHD (ICP E/R)",
+  "alamat": "LOT 83338, JALAN KEBUN BATU 6,\n40460 SHAH ALAM\nSELANGOR",
+  "ampere": "1000A",
+  "kepada": "Selangor",
+  "voltan": "400V",
+  "category": "Part 2",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS SDN BHD (ICP E/R)",
+  "giliran_no": "1",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS SDN BHD (ICP E/R)",
+  "default_remark": "Loading: 249V @ 90A, PF: 0.92.",
+  "default_remarks": [
+    "Loading: 249V @ 90A, PF: 0.92.",
+    "Tiada",
+    "Tiada"
+  ]
+}

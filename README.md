@@ -11,7 +11,30 @@ The app uses `sample.docx` as its built-in template. For local development, comp
 
 ## Persistent company storage on Streamlit Community Cloud
 
-The filesystem of a deployed Streamlit app is temporary. To retain company profiles across app restarts, create a Supabase project and run this SQL in its SQL editor:
+The filesystem of a deployed Streamlit app is temporary. The app can store company profiles as JSON files in this repository using the GitHub Contents API. Each create, edit, or delete operation creates a GitHub commit, so profiles remain available after app restarts and redeployments.
+
+### GitHub storage
+
+Create a fine-grained GitHub personal access token with:
+
+- Repository access limited to this repository
+- **Contents: Read and write** permission
+
+In Streamlit Cloud, open **Manage app -> Settings -> Secrets** and add:
+
+```toml
+GITHUB_TOKEN = "github_pat_your_token"
+GITHUB_REPOSITORY = "joejoelay2000/Automated-Form"
+GITHUB_BRANCH = "main"
+```
+
+Keep `GITHUB_TOKEN` only in Streamlit Secrets. Never commit it to the repository. The token allows the app to modify company JSON files, so anyone who can access the app can currently create, edit, or delete company profiles. Add authentication before sharing the app publicly if that is not acceptable.
+
+When these GitHub secrets are present, GitHub storage takes priority over Supabase and local JSON storage. The existing files in `companies/` are loaded automatically.
+
+### Supabase storage
+
+If GitHub storage is not configured, the app can still use Supabase. Create a Supabase project and run this SQL in its SQL editor:
 
 ```sql
 create table companies (
@@ -46,6 +69,8 @@ Use a server-side Supabase key because this app does not have user authenticatio
 DOCX downloads work with the Python dependencies in `requirements.txt`. PDF downloads convert the generated DOCX with LibreOffice so the PDF keeps the same format as the Word document.
 
 Existing profiles can be edited from the company list. The completed certificate can be downloaded as Word, PDF, or a text summary, and the summary can be shared through WhatsApp, Telegram, or email. Attach the downloaded Word or PDF file separately when sending it through a messaging service.
+
+Company profiles may also include optional `nickname` and `default_remark` fields. Older profiles without these fields continue to work; the official `klien` name is used in generated documents, while the nickname is used only in the selection list. The `Export` menu includes a WhatsApp share link and an optional Google Drive upload. To enable Drive upload, add the Google service-account JSON as `GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON` in Streamlit Secrets. You may also set `GOOGLE_DRIVE_FOLDER_ID` to upload into a specific shared folder, and share that folder with the service-account email.
 
 Each company profile includes a `Kepada` choice for Melaka or Selangor. Existing profiles without this field use Melaka by default. Each choice inserts its corresponding recipient address into the certificate.
 
