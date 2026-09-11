@@ -10,7 +10,7 @@ from copy import deepcopy
 from datetime import date
 from pathlib import Path
 from urllib.parse import quote
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import streamlit as st
@@ -192,6 +192,8 @@ def github_request(method, path, payload=None):
             return None
         detail = error.read().decode("utf-8", errors="replace")
         raise RuntimeError(f"GitHub storage request failed ({error.code}): {detail}") from error
+    except URLError as error:
+        raise RuntimeError(f"GitHub storage network request failed: {error.reason}") from error
 
 
 def github_file_path(company_name_value):
@@ -218,6 +220,16 @@ def load_github_companies():
             decoded = base64.b64decode(contents["content"]).decode("utf-8")
             companies.append(json.loads(decoded))
         except (ValueError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+    return companies
+
+
+def load_local_companies():
+    companies = []
+    for path in sorted(COMPANIES_DIR.glob("*.json")):
+        try:
+            companies.append(json.loads(path.read_text(encoding="utf-8")))
+        except (OSError, json.JSONDecodeError):
             continue
     return companies
 
@@ -369,7 +381,11 @@ st.markdown(
 def load_companies():
     github_token, github_repository, _ = get_github_config()
     if github_token and github_repository:
-        return load_github_companies()
+        try:
+            return load_github_companies()
+        except RuntimeError as error:
+            st.warning(f"GitHub storage is unavailable. Showing bundled company data. ({error})")
+            return load_local_companies()
     database = get_database()
     if database:
         try:
@@ -383,12 +399,7 @@ def load_companies():
         if response.data:
             return [row["data"] for row in response.data]
 
-    companies = []
-    for path in sorted(COMPANIES_DIR.glob("*.json")):
-        try:
-            companies.append(json.loads(path.read_text(encoding="utf-8")))
-        except (OSError, json.JSONDecodeError):
-            continue
+    companies = load_local_companies()
     if database and companies:
         database.table("companies").upsert(
             [{"name": company["klien"], "data": company} for company in companies],
