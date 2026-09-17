@@ -1,0 +1,17 @@
+{
+  "klien": "SGM CULTURE CENTRE (HEADQUARTERS)",
+  "company_name": "SGM CULTURE CENTRE (HEADQUARTERS)",
+  "nickname": "SGM CULTURE CENTRE (HEADQUARTERS)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "SGM CULTURE CENTRE (HEADQUARTERS)\nLOT 960 KM14\nJALAN CHERAS\n43200 BATU 9 CHERAS\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "750A"
+}
