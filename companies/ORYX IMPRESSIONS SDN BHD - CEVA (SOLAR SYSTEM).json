@@ -1,0 +1,17 @@
+{
+  "klien": "ORYX IMPRESSIONS SDN BHD - CEVA (SOLAR SYSTEM)",
+  "company_name": "ORYX IMPRESSIONS SDN BHD - CEVA (SOLAR SYSTEM)",
+  "nickname": "ORYX IMPRESSIONS SDN BHD - CEVA (SOLAR SYSTEM)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "NO. 9A, JALAN TIANG U8/92,\nTAMAN BUKIT JELUTONG,\n40100 SHAH ALAM\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V SOLAR",
+  "ampere": "1000A"
+}
