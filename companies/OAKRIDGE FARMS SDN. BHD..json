@@ -1,0 +1,17 @@
+{
+  "klien": "OAKRIDGE FARMS SDN. BHD.",
+  "company_name": "OAKRIDGE FARMS SDN. BHD.",
+  "nickname": "OAKRIDGE FARMS SDN. BHD.",
+  "category": "YB (Part 1)",
+  "default_remark": "To do protection relay recalibration for Expired Solar Panel.\nTo display schematic diagram and CPR chart.\nTo provide fire extinguisher.\nTo display genset ST registration.",
+  "default_remarks": [
+    "To do protection relay recalibration for Expired Solar Panel.\nTo display schematic diagram and CPR chart.\nTo provide fire extinguisher.\nTo display genset ST registration.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "NO. 8, JALAN UDANG GALAH 1/KS10, TELOK GONG,\n42000 PELABOHAN KELANG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "1200A"
+}
