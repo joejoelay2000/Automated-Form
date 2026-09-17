@@ -231,6 +231,7 @@ def load_github_companies():
     return companies
 
 
+@st.cache_data(ttl=300, show_spinner=False)
 def load_local_companies():
     companies = []
     for path in sorted(COMPANIES_DIR.glob("*.json")):
@@ -385,14 +386,19 @@ st.markdown(
 )
 
 
+@st.cache_data(ttl=300, show_spinner=False)
 def load_companies():
+    local_companies = load_local_companies()
+    if local_companies:
+        return local_companies
+
     github_token, github_repository, _ = get_github_config()
     if github_token and github_repository:
         try:
             return load_github_companies()
         except RuntimeError as error:
             st.warning(f"GitHub storage is unavailable. Showing bundled company data. ({error})")
-            return load_local_companies()
+            return []
     database = get_database()
     if database:
         try:
@@ -420,16 +426,19 @@ def save_company(company):
     if github_token and github_repository:
         save_github_company(company)
         load_github_companies.clear()
+        load_companies.clear()
         return
     database = get_database()
     if database:
         database.table("companies").upsert(
             {"name": company["klien"], "data": company}, on_conflict="name"
         ).execute()
+        load_companies.clear()
         return
 
     path = COMPANIES_DIR / company_profile_filename(company["klien"])
     path.write_text(json.dumps(company, ensure_ascii=False, indent=2), encoding="utf-8")
+    load_companies.clear()
 
 
 def update_company(original_name, company):
@@ -444,10 +453,13 @@ def delete_company(company):
         deleted = delete_github_company(company)
         if deleted:
             load_github_companies.clear()
+            load_companies.clear()
         return deleted
     database = get_database()
     if database:
         response = database.table("companies").delete().eq("name", company["klien"]).execute()
+        if response.data:
+            load_companies.clear()
         return bool(response.data)
 
     for path in COMPANIES_DIR.glob("*.json"):
@@ -457,6 +469,7 @@ def delete_company(company):
             continue
         if saved_company.get("klien") == company.get("klien"):
             path.unlink()
+            load_companies.clear()
             return True
     return False
 
