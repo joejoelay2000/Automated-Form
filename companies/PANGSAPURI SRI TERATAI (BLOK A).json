@@ -1,0 +1,17 @@
+{
+  "klien": "PANGSAPURI SRI TERATAI (BLOK A)",
+  "company_name": "PANGSAPURI SRI TERATAI (BLOK A)",
+  "nickname": "PANGSAPURI SRI TERATAI (BLOK A)",
+  "category": "YB (Part 1)",
+  "default_remark": "Fire alarm panels for MSB and Generator Set rooms malfunction, to rectify.\nFire alarm panel battery Voltage at 4V.\nTo test run genset periodically.",
+  "default_remarks": [
+    "Fire alarm panels for MSB and Generator Set rooms malfunction, to rectify.\nFire alarm panel battery Voltage at 4V.\nTo test run genset periodically.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "JALAN BANDAR PUCHONG LEBUH RAYA BUKIT JALIL\nBANDAR PUCHONG JAYA\n47170 PUCHONG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "2x800A"
+}
