@@ -1,0 +1,17 @@
+{
+  "klien": "SENSATA TECHNOLOGIES MALAYSIA SDN BHD (SOLAR)",
+  "company_name": "SENSATA TECHNOLOGIES MALAYSIA SDN BHD (SOLAR)",
+  "nickname": "SENSATA TECHNOLOGIES MALAYSIA SDN BHD (SOLAR)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 84, PERSIARAN SUBANG INDAH, TAMAN INDUSTRI USJ 1\n47600 SUBANG JAYA\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V SOLAR",
+  "ampere": "730A"
+}
