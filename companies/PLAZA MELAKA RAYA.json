@@ -1,0 +1,17 @@
+{
+  "klien": "PLAZA MELAKA RAYA",
+  "company_name": "PLAZA MELAKA RAYA",
+  "nickname": "PLAZA MELAKA RAYA (GILIRAN NO.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "Strongly recommended to do major refurbish the switchgear and transformer room. The room condition is unsafe with notable water ingress and corrosion on the transformer earthing cooper tape.",
+  "default_remarks": [
+    "Strongly recommended to do major refurbish the switchgear and transformer room. The room condition is unsafe with notable water ingress and corrosion on the transformer earthing cooper tape.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "2-88, PLAZA MELAKA N0. 5, JALAN MERDEKA,\nTAMAN MERDEKA RAYA,\n75000 MELAKA\nMELAKA",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "630A"
+}
