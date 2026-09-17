@@ -1,0 +1,17 @@
+{
+  "klien": "CHAMP FUNGI SDN BHD",
+  "company_name": "CHAMP FUNGI SDN BHD",
+  "nickname": "CHAMP FUNGI SDN BHD",
+  "category": "YB (Part 1)",
+  "default_remark": "To provide Rubber Mat, Schematic Diagram, \"DANGER\" & \"NO ADMITTANCE\" signages and CPR Chart in the Switch Room.\nTo renew BOMBA certificate for fire extinguisher.\nTo display ST registration.",
+  "default_remarks": [
+    "To provide Rubber Mat, Schematic Diagram, \"DANGER\" & \"NO ADMITTANCE\" signages and CPR Chart in the Switch Room.\nTo renew BOMBA certificate for fire extinguisher.\nTo display ST registration.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "LOT 9173, JALAN TELOK GONG,\n42000 PELABOHAN KELANG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "1200A"
+}
