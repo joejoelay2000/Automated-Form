@@ -1,0 +1,17 @@
+{
+  "klien": "BANGUNAN PEJABAT 7 TKT (LEE KAY HUAN HOLDING (M) SB)",
+  "company_name": "BANGUNAN PEJABAT 7 TKT (LEE KAY HUAN HOLDING (M) SB)",
+  "nickname": "BANGUNAN PEJABAT 7 TKT (LEE KAY HUAN HOLDING (M) SB)",
+  "category": "YB (Part 1)",
+  "default_remark": "To test run genset periodically.",
+  "default_remarks": [
+    "To test run genset periodically.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 14408 JALAN GENTING KELANG\nMUKIM SETAPAK\n53000 KUALA LUMPUR\nWILAYAH PERSEKUTUAN KUALA LUMPUR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "800A"
+}
