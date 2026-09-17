@@ -1,0 +1,17 @@
+{
+  "klien": "EXPRESS AUDIO INDUSTRY SDN BHD.",
+  "company_name": "EXPRESS AUDIO INDUSTRY SDN BHD.",
+  "nickname": "EXPRESS AUDIO INDUSTRY SDN. BHD. (GILIRAN NO.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT. 3385, JALAN HULU LANGAT, BATU 10,\nBATU 10 HULU LANGAT\n43100 HULU LANGAT\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "60A"
+}
