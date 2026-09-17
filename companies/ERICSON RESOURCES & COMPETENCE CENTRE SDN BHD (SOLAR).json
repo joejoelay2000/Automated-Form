@@ -1,0 +1,17 @@
+{
+  "klien": "ERICSON RESOURCES & COMPETENCE CENTRE SDN BHD (SOLAR)",
+  "company_name": "ERICSON RESOURCES & COMPETENCE CENTRE SDN BHD (SOLAR)",
+  "nickname": "ERICSON RESOURCES & COMPETENCE CENTRE SDN BHD (SOLAR)",
+  "category": "YB (Part 1)",
+  "default_remark": "To recalibrate protection relay for Solar Switchboard expired on October 2024.",
+  "default_remarks": [
+    "To recalibrate protection relay for Solar Switchboard expired on October 2024.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "NO. 9, JALAN TIANG U8/92,\nTAMAN BUKIT JELUTONG,\n40100 SHAH ALAM\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "1000A"
+}
