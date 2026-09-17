@@ -1,0 +1,17 @@
+{
+  "klien": "VIT MAKANAN (KUALA LUMPUR) SDN BHD - SOLAR",
+  "company_name": "VIT MAKANAN (KUALA LUMPUR) SDN BHD - SOLAR",
+  "nickname": "VIT MAKANAN (KUALA LUMPUR) SDN BHD - SOLAR",
+  "category": "YB (Part 1)",
+  "default_remark": "Paparkan lesen pepasangan elektrik\nPaparkan pelan skematik\nTambahkan tikar getah\nTambahkan tanda bahaya",
+  "default_remarks": [
+    "Paparkan lesen pepasangan elektrik\nPaparkan pelan skematik\nTambahkan tikar getah\nTambahkan tanda bahaya",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 126, JALAN TAMAN INDUSTRI INTEGRASI RAWANG 1/2\nTAMAN INDUSTRI INTEGRASI RAWANG\n48000 RAWANG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V SOLAR",
+  "ampere": "600A"
+}
