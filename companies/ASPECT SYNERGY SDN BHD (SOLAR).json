@@ -1,0 +1,17 @@
+{
+  "klien": "ASPECT SYNERGY SDN BHD (SOLAR)",
+  "company_name": "ASPECT SYNERGY SDN BHD (SOLAR)",
+  "nickname": "ASPECT SYNERGY SDN BHD (SOLAR)",
+  "category": "YB (Part 1)",
+  "default_remark": "To provide rubber mat.\nTo provide CPR chart.\nto recalibrate expired protection relay.",
+  "default_remarks": [
+    "To provide rubber mat.\nTo provide CPR chart.\nto recalibrate expired protection relay.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "IRINGI BAYU SHOW VILLAGE, PERSIARAN IRIGIN BAYU 3,\n70300 SEREMBAN\nNEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "400V SOLAR",
+  "ampere": "200A"
+}
