@@ -1,0 +1,17 @@
+{
+  "klien": "TRANSMARK CORPORATION SDN BHD",
+  "company_name": "TRANSMARK CORPORATION SDN BHD",
+  "nickname": "TRANSMARK CORPORATION SDN BHD",
+  "category": "YB (Part 1)",
+  "default_remark": "To recalibrate the expired protection relay.",
+  "default_remarks": [
+    "To recalibrate the expired protection relay.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "NO. 3, JALAN TP3, TAMAN PERINDUSTRIAN UEP,\n47600 SUBANG JAYA\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "600A"
+}
