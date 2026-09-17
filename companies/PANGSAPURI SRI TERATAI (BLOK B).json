@@ -1,0 +1,17 @@
+{
+  "klien": "PANGSAPURI SRI TERATAI (BLOK B)",
+  "company_name": "PANGSAPURI SRI TERATAI (BLOK B)",
+  "nickname": "PANGSAPURI SRI TERATAI (BLOK B)",
+  "category": "YB (Part 1)",
+  "default_remark": "Fire alarm panel for MSB Room malfunction, to rectify.",
+  "default_remarks": [
+    "Fire alarm panel for MSB Room malfunction, to rectify.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "JALAN BANDAR PUCHONG , LEBUH RAYA BUKIT JALIL,\n47170 PUCHONG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "2x800A"
+}
