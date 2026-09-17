@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BESTARI JAYA - SOLAR)",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BESTARI JAYA - SOLAR)",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS BERHAD (BESTARI JAYA - SOLAR)",
+  "category": "YB (Part 1)",
+  "default_remark": "To provide schematic diagram and CPR Chart.",
+  "default_remarks": [
+    "To provide schematic diagram and CPR Chart.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 604, 37221 DAN 37222, JALAN TIMUR TAMBAHAN,\nDAERAH KUALA SELANGOR,\n45600 BESTARI JAYA\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V SOLAR",
+  "ampere": "400A"
+}
