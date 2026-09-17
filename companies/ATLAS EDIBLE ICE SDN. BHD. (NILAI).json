@@ -1,0 +1,17 @@
+{
+  "klien": "ATLAS EDIBLE ICE SDN. BHD. (NILAI)",
+  "company_name": "ATLAS EDIBLE ICE SDN. BHD. (NILAI)",
+  "nickname": "ATLAS EDIBLE ICE SDN. BHD. (NILAI) (GILIRAN NO.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "PT 2192, JALAN TS2/8C, TAMAN SEMARAK,\n71800 NILAI\nNEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "150A"
+}
