@@ -1,0 +1,17 @@
+{
+  "klien": "SATCOM GATEWAY SERVICES SDN BHD",
+  "company_name": "SATCOM GATEWAY SERVICES SDN BHD",
+  "nickname": "SATCOM GATEWAY SERVICES SDN BHD",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "LOT 23126, BATU 10, KAMPUNG RIBU,\n71200 RANTAU\nNEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "2x800A"
+}
