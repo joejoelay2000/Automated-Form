@@ -1,0 +1,17 @@
+{
+  "klien": "TECHNO FRESH AGRO PRODUCE SDN BHD (SOLAR SYSTEM)",
+  "company_name": "TECHNO FRESH AGRO PRODUCE SDN BHD (SOLAR SYSTEM)",
+  "nickname": "TECHNO FRESH AGRO PRODUCE SDN BHD (SOLAR SYSTEM)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 9155, JALAN BESAR, TELOK GONG\nPORT KLANG\n42000 PELABOHAN KELANG\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "500A"
+}
