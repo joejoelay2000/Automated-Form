@@ -1,0 +1,17 @@
+{
+  "klien": "INDUSTRIAL CONCRETE PRODUCTS (BESTARI JAYA)",
+  "company_name": "INDUSTRIAL CONCRETE PRODUCTS (BESTARI JAYA)",
+  "nickname": "INDUSTRIAL CONCRETE PRODUCTS (BESTARI JAYA) (GILIRAN NO.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "To provide schematic diagram and CPR Chart.",
+  "default_remarks": [
+    "To provide schematic diagram and CPR Chart.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 604, 37221 DAN 37222, JALAN TIMUR TAMBAHAN,\nDAERAH KUALA SELANGOR, SELANGOR DARUL EHSAN.\n45600 BESTARI JAYA\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "250A"
+}
