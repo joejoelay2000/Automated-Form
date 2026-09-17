@@ -1,0 +1,17 @@
+{
+  "klien": "ABSOLUTE DEAL SDN BHD (SOLAR)",
+  "company_name": "ABSOLUTE DEAL SDN BHD (SOLAR)",
+  "nickname": "ABSOLUTE DEAL SDN BHD (SOLAR)",
+  "category": "YB (Part 1)",
+  "default_remark": "Protection relay recalibration expired on 04-10-2024. To recalibrate.",
+  "default_remarks": [
+    "Protection relay recalibration expired on 04-10-2024. To recalibrate.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 4, PERSIARAN PERUSAHAAN, SEKSYEN 23,\n40300 SHAH ALAM\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "1600A"
+}
