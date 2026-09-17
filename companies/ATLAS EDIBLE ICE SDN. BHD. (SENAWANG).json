@@ -1,0 +1,17 @@
+{
+  "klien": "ATLAS EDIBLE ICE SDN. BHD. (SENAWANG)",
+  "company_name": "ATLAS EDIBLE ICE SDN. BHD. (SENAWANG)",
+  "nickname": ": ATLAS EDIBLE ICE SDN. BHD. (SENAWANG) (GILIRAN NO.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "To check faulty capacitor bank.",
+  "default_remarks": [
+    "To check faulty capacitor bank.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "LOT 2105, JALAN TAMPIN, KAWASAN PERINDUSTRIAN RINGAN SRI SENAWANG,\n70450 SEREMBAN\nNEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "100A"
+}
