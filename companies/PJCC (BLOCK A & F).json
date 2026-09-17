@@ -1,0 +1,17 @@
+{
+  "klien": "PJCC (BLOCK A & F)",
+  "company_name": "PJCC (BLOCK A & F)",
+  "nickname": "PJCC (BLOCK A & F)",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "NO 33-3A JALAN PJS 5/30\nPUSAT DAGANGAN PETALING JAYA SELATAN\nPETALING JAYA\n46150 PETALING JAYA\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "100A"
+}
