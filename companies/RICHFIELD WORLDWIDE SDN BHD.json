@@ -1,0 +1,17 @@
+{
+  "klien": "RICHFIELD WORLDWIDE SDN BHD",
+  "company_name": "RICHFIELD WORLDWIDE SDN BHD",
+  "nickname": "RICHFIELD WORLDWIDE SDN BHD",
+  "category": "YB (Part 1)",
+  "default_remark": "Tiada",
+  "default_remarks": [
+    "Tiada",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 542, JALAN TUDM, KAMPUNG BARU SUBANG\nSEKSYEN U6\n40150 SHAH ALAM\nSELANGOR",
+  "giliran_no": "1",
+  "voltan": "400V",
+  "ampere": "400A"
+}
