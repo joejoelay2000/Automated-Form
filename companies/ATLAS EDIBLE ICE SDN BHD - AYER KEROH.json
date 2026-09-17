@@ -1,0 +1,17 @@
+{
+  "klien": "ATLAS EDIBLE ICE SDN BHD - AYER KEROH",
+  "company_name": "ATLAS EDIBLE ICE SDN BHD - AYER KEROH",
+  "nickname": "ATLAS EDIBLE ICE SDN BHD - AYER KEROH (Giliran No.1)",
+  "category": "YB (Part 1)",
+  "default_remark": "MSB's ammeter faulty, to rectify.\nTo provide 'DANGER' sign for LV switch room.",
+  "default_remarks": [
+    "MSB's ammeter faulty, to rectify.\nTo provide 'DANGER' sign for LV switch room.",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "NO. 3, JALAN TU 51, TAMAN PERINDUSTRIAN TASIK UTAMA,\n75450 AYER KEROH\nMELAKA",
+  "giliran_no": "1",
+  "voltan": "11kV",
+  "ampere": "150A"
+}
