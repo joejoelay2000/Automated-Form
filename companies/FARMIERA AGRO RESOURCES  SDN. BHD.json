@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO RESOURCES  SDN. BHD",
+  "company_name": "FARMIERA AGRO RESOURCES  SDN. BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (LOT 3377, LADANG TANJONG SEPAT)",
+  "category": "YB (Part 2)",
+  "default_remark": "To conduct housekeeping in genset room",
+  "default_remarks": [
+    "To conduct housekeeping in genset room",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 3377, JALAN LADANG TANJONG SEPAT, 42800, BANTING SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "400A"
+}
