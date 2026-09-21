@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO RESOURCES SDN BHD",
+  "company_name": "FARMIERA AGRO RESOURCES SDN BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD",
+  "category": "YB (Part 2)",
+  "default_remark": "To display CPR chart, schematic and ST license",
+  "default_remarks": [
+    "To display CPR chart, schematic and ST license",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Melaka",
+  "alamat": "LOT 1606, JALAN HULU BENING 44300 BATANG KALI SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "300A"
+}
