@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO  RESOURCES  SDN BHD",
+  "company_name": "FARMIERA AGRO  RESOURCES  SDN BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (BATU BATA KG KUNDANG, TANJONG SEPAT)",
+  "category": "YB (Part 2)",
+  "default_remark": "TIADA",
+  "default_remarks": [
+    "TIADA",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 847, JALAN BATU BATA KG KUNDANG, 42800, TANJONG SEPAT SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "500A"
+}
