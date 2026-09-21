@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA  AGRO  RESOURCES  SDN  BHD",
+  "company_name": "FARMIERA  AGRO  RESOURCES  SDN  BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (1233 LADANG BEDFOD)",
+  "category": "YB (Part 2)",
+  "default_remark": "TIADA",
+  "default_remarks": [
+    "TIADA",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 1233, JALAN LADANG BEDFOD KG TANJONG LAYANG, 42800, TANJONG SEPAT SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "400A"
+}
