@@ -1,7 +1,7 @@
 {
   "klien": "FARMIERA AGRO RESOURCES SDN BHD",
   "company_name": "FARMIERA AGRO RESOURCES SDN BHD",
-  "nickname": "FARMIERA AGRO RESOURCES SDN BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD ( BATANG KALI)",
   "category": "YB (Part 2)",
   "default_remark": "To display CPR chart, schematic and ST license",
   "default_remarks": [
@@ -9,7 +9,7 @@
     "Tiada",
     "Tiada"
   ],
-  "kepada": "Selangor",
+  "kepada": "Melaka",
   "alamat": "LOT 1606, JALAN HULU BENING 44300 BATANG KALI SELANGOR",
   "giliran_no": "1",
   "voltan": "415V",
