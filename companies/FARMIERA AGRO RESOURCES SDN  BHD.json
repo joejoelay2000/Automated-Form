@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO RESOURCES SDN  BHD",
+  "company_name": "FARMIERA AGRO RESOURCES SDN  BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (LENGGENG NEGERI SEMBILAN)",
+  "category": "YB (Part 2)",
+  "default_remark": "To display ST license",
+  "default_remarks": [
+    "To display ST license",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Melaka",
+  "alamat": "Lot 1076, JALAN KG ORANG ASLI, KG ORANG ASLI LUMUT 71750, LENGGENG NEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "400A"
+}
