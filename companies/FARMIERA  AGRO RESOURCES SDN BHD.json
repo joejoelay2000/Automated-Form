@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA  AGRO RESOURCES SDN BHD",
+  "company_name": "FARMIERA  AGRO RESOURCES SDN BHD",
+  "nickname": "FARMIERA  AGRO RESOURCES SDN BHD (BANDAR BARU ENSTEK )",
+  "category": "YB (Part 2)",
+  "default_remark": "TO DISPLAY ST LICENSE",
+  "default_remarks": [
+    "TO DISPLAY ST LICENSE",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Melaka",
+  "alamat": "Lot 15245, JALAN UTAMA EKA MATAHARI, TAMAN EKA MATAHARI 71760, BANDAR BARU ENSTEK NEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "400A"
+}
