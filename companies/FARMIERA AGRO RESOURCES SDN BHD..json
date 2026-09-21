@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO RESOURCES SDN BHD.",
+  "company_name": "FARMIERA AGRO RESOURCES SDN BHD.",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (HULU SELANGOR)",
+  "category": "YB (Part 2)",
+  "default_remark": "Missing bahaya signage\nTo display ST license",
+  "default_remarks": [
+    "Missing bahaya signage\nTo display ST license",
+    "Tiada",
+    "Tiada"
+  ],
+  "kepada": "Selangor",
+  "alamat": "PT 311 JALAN BESAR, 44100, HULU SELANGOR SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "300A"
+}
