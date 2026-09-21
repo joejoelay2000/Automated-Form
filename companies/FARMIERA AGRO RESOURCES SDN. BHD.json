@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO RESOURCES SDN. BHD",
+  "company_name": "FARMIERA AGRO RESOURCES SDN. BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD ( TANJUNG KARANG)",
+  "category": "YB (Part 2)",
+  "default_remark": "To display ST license",
+  "default_remarks": [
+    "To display ST license",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Selangor",
+  "alamat": "LOT 796, LRG MUTIARA JALAN PARIT SERONG 45500, TANJUNG KARANG SELANGOR",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "400A"
+}
