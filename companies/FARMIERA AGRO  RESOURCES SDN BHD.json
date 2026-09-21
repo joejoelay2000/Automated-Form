@@ -1,0 +1,17 @@
+{
+  "klien": "FARMIERA AGRO  RESOURCES SDN BHD",
+  "company_name": "FARMIERA AGRO  RESOURCES SDN BHD",
+  "nickname": "FARMIERA AGRO RESOURCES SDN BHD (BATU 8 PANTAI)",
+  "category": "YB (Part 2)",
+  "default_remark": "To display ST license",
+  "default_remarks": [
+    "To display ST license",
+    "TIADA",
+    "TIADA"
+  ],
+  "kepada": "Melaka",
+  "alamat": "Lot 2168, JALAN PANTAI, BATU 8 PANTAI 71770, SEREMBAN NEGERI SEMBILAN",
+  "giliran_no": "1",
+  "voltan": "415V",
+  "ampere": "600A"
+}
